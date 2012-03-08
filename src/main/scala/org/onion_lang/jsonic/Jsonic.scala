@@ -35,7 +35,7 @@ class Jsonic {
   
   class Binder(override val self: String) extends PimpedType[String] {
     def :-(value: JsonAST.JValue) {
-      values.value = JsonAST.JField(self, value) :: JsonAST.JField(self, value) :: values.value
+      values.value = JsonAST.JField(self, value) :: values.value
     }
   }
   

@@ -11,11 +11,11 @@ object JsonicExample {
       "y" :- 20
       "z" :- %{
         "a" :- $(1, 2, 3, 4, 5)
-        "b" :- $(6, 7, %{ "xx" -> "yy" })
+        "b" :- $(6, 7, %{ "xx" :- "yy" })
       }
     }
     println(arb)
-    val person = %{ 'name :- "Kota Mizushima"; 'age -> 28 }
+    val person = %{ 'name :- "Kota Mizushima"; 'age :- 28 }
     println(person)
   }
 }
