@@ -18,9 +18,8 @@ Jsonic is very simple DSL for creating JSON objects.  Notations are followings:
 * array:
     $($value1, $value2, ...)
 * primitive: 
-  * number:
-    * integer: e.g. 100
-    * double: 10.5
+  * number(integer): e.g. 100
+  * number(double): e.g. 10.5
   * string: e.g. "Hello, World!"
   * boolean: e.g. true 
   * null: null
