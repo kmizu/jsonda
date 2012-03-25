@@ -11,7 +11,7 @@ what it does
 
 # Syntax
 
-Jsonic is very simple DSL for JSON.  Notations are followings:
+Jsonic is very simple DSL for creating JSON objects.  Notations are followings:
 
 * object: 
     %{ $key1 :- $value1; $key2 :- $value2; ... }
