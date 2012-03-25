@@ -30,7 +30,7 @@ Here are the way to create JSON using Jsonic:
     import org.onion_lang.jsonic.Jsonic._
     
     val person = %{
-      'name :- "Kota Mizushima";
+      'name :- "Kota Mizushima"
       'age :- 28
     }
     
