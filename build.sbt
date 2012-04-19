@@ -23,6 +23,10 @@ resolvers ++= Seq(
   "releases"  at "http://oss.sonatype.org/content/repositories/releases"
 )
 
+publishTo := Some(Resolver.file("Github Pages", Path.userHome / "git" / "kmizu.github.com" / "maven" asFile)(Patterns(true, Resolver.mavenStyleBasePattern)))
+
+publishMavenStyle := true
+
 scalacOptions ++= Seq("-deprecation","-unchecked")
 
 initialCommands in console += {
