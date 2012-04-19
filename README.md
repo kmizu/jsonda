@@ -1,8 +1,8 @@
-# Jsonic - a powerful DSL for constructing JSON objects.
+# Jsonic - a simple DSL for JSON objects construction.
 
-This project provides a Jsonic DSL, which can be used to construct JSON object easily, in Scala.
-Currently, this project is experimental.  However, the code size is small, It is easy to understand
-what it does
+This project provides a Jsonic DSL, which can be used to construct JSON object
+easily, in Scala.  The code size of jsonic is small and it is easy to 
+understand what it does.
 
 # For Developer
 
