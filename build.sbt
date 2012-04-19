@@ -24,7 +24,10 @@ resolvers ++= Seq(
 )
 
 scalacOptions ++= Seq("-deprecation","-unchecked")
- 
+
 initialCommands in console += {
-  Iterator("net.liftweb.json._").map("import "+).mkString("\n")
+  Iterator(
+    "net.liftweb.json._",
+    "org.onion_lang.jsonic.Jsonic._"
+  ).map("import "+).mkString("\n")
 }
