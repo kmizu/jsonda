@@ -30,7 +30,7 @@ import net.liftweb.json.JsonAST
  * }
  * }}}
  */
-class Jsonic {
+class JsonicImplicits {
   private[this] val values = new DynamicVariable[List[JsonAST.JField]](null)
   
   class Binder(override val self: String) extends PimpedType[String] {
@@ -68,4 +68,4 @@ class Jsonic {
  * import org.onion_lang.jsonic.Jsonic._
  * }}}
  */
-object Jsonic extends Jsonic
+object JsonicImplicits extends JsonicImplicits

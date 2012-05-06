@@ -11,7 +11,7 @@ import net.liftweb.json.JsonAST
  *
  */
 class JsonicSpecification extends Specification {
-  """a Jsonic %{'name :- "Kota Mizushima", 'age :- 18}}}""" should {
+  """a JsonicImplicits %{'name :- "Kota Mizushima", 'age :- 18}}}""" should {
       val person = %{'name :- "Kota Mizushima"; 'age :- 28} 
     """have name "Kota Mizushima""" in {
       (person \\ "name").asInstanceOf[JsonAST.JString].values must ===("Kota Mizushima")

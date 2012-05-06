@@ -1,5 +1,5 @@
 package org.onion_lang.jsonic.example
-import org.onion_lang.jsonic.Jsonic._
+import org.onion_lang.jsonic.JsonicImplicits._
 
 /**
  * An example program using JsonBuilder.
