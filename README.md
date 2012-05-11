@@ -9,6 +9,15 @@ Jsonic to Jsonda.
 Work for renaming dosn't complete yet now.  work for renaming will complete
 until next Saturday.
 
+# Using sbt
+
+If you woule like to use Jsonda with sbt, what you need to do is only
+adding the following lines to your build.sbt.
+
+    resolver += "kmizu-repo"  at "http://kmizu.github.com/maven/"
+    
+    libraryDependencies += "org.onion_lang" %% "jsonda"  % "0.0.1"
+
 # For Developer
 
 * By running sbt gen-idea, project definition files for IntelliJ IDEA is generated.
