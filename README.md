@@ -33,7 +33,7 @@ Jsonda is very simple DSL for creating JSON objects.  Notations are followings:
 
 Here are the way to create JSON using Jsonda:
 
-    import org.onion_lang.jsonic.Jsonic._
+    import org.onion_lang.jsonda.Implicits._
     
     val person = %{
       'name :- "Kota Mizushima"

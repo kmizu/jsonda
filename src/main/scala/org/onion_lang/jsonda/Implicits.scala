@@ -1,4 +1,4 @@
-package org.onion_lang.jsonic
+package org.onion_lang.jsonda
 import scala.util.DynamicVariable
 import net.liftweb.json.JsonAST
 
@@ -7,7 +7,7 @@ import net.liftweb.json.JsonAST
  * To use the DSL, the following code is needed for preparation:
  * 
  * {{{
- * val builder = new Jsonic
+ * val builder = new org.onion_lang.jsonda.Implicits
  * import builder._
  * }}}
  * 
@@ -24,18 +24,18 @@ import net.liftweb.json.JsonAST
  * inside blocks:
  * {{{
  * {
- *   val builder = new Jsonic
+ *   val builder = new org.onion_lang.jsonda.Implicits
  *   import builder._
  *   val person = %{'name :- "A Person"; 'age :- 28}
  * }
  * }}}
  */
-class JsonicImplicits {
+class Implicits {
   private[this] val values = new DynamicVariable[List[JsonAST.JField]](null)
   
   class Binder(override val self: String) extends PimpedType[String] {
     def :-(value: JsonAST.JValue) {
-      values.value = JsonAST.JField(self, value) :: values.value
+      values.value = JsonAST.JField(self, value) :: JsonAST.JField(self, value) :: values.value
     }
   }
   
@@ -62,10 +62,10 @@ class JsonicImplicits {
 }
 
 /**
- * It is shorthand of (new Jsonic).
- * You can use Jsonnic object instead of (new Jsonic) as the followings:
+ * It is shorthand of (new Implicits).
+ * You can use Implicits object instead of (new Implicits) as the followings:
  * {{{
- * import org.onion_lang.jsonic.Jsonic._
+ * import org.onion_lang.jsonda.Implicits._
  * }}}
  */
-object JsonicImplicits extends JsonicImplicits
+object Implicits extends Implicits

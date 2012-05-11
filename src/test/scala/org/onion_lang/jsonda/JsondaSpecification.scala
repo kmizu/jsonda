@@ -1,8 +1,8 @@
 /**
  *
  */
-package org.onion_lang.jsonic
-import org.onion_lang.jsonic.Jsonic._
+package org.onion_lang.jsonda
+import org.onion_lang.jsonda.Implicits._
 import org.specs2.mutable.Specification
 import net.liftweb.json.JsonAST
 
@@ -10,8 +10,8 @@ import net.liftweb.json.JsonAST
  * @author Mizushima
  *
  */
-class JsonicSpecification extends Specification {
-  """a JsonicImplicits %{'name :- "Kota Mizushima", 'age :- 18}}}""" should {
+class JsondaSpecification extends Specification {
+  """a Implicits %{'name :- "Kota Mizushima", 'age :- 18}}}""" should {
       val person = %{'name :- "Kota Mizushima"; 'age :- 28} 
     """have name "Kota Mizushima""" in {
       (person \\ "name").asInstanceOf[JsonAST.JString].values must ===("Kota Mizushima")

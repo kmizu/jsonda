@@ -1,4 +1,4 @@
-package org.onion_lang.jsonic
+package org.onion_lang.jsonda
 
 /** Represents marker trait that types extending [[org.onion_lang.jsonic.PimpedType[T]] are just for "extension method" pattern.
  */
