@@ -1,8 +1,13 @@
-# Jsonic - a simple DSL for JSON objects construction.
+# Jsonda - a simple DSL for JSON objects construction.
 
 This project provides a Jsonic DSL, which can be used to construct JSON object
-easily, in Scala.  The code size of jsonic is small and it is easy to 
-understand what it does.
+easily, in Scala.  The code size of Jsonda is small and it is easy to 
+understand what it does.  Although Jsonda was formerly Jsonic, I was told that
+there is already another Jsonic library in Java by @okapies san.  Then, I renamed
+Jsonic to Jsonda.
+
+Work for renaming dosn't complete yet now.  work for renaming will complete
+until next Saturday.
 
 # For Developer
 
@@ -11,7 +16,7 @@ understand what it does.
 
 # Syntax
 
-Jsonic is very simple DSL for creating JSON objects.  Notations are followings:
+Jsonda is very simple DSL for creating JSON objects.  Notations are followings:
 
 * object: 
     %{ $key1 :- $value1; $key2 :- $value2; ... }
@@ -26,7 +31,7 @@ Jsonic is very simple DSL for creating JSON objects.  Notations are followings:
 
 # Quick Start
 
-Here are the way to create JSON using Jsonic:
+Here are the way to create JSON using Jsonda:
 
     import org.onion_lang.jsonic.Jsonic._
     
