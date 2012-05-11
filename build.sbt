@@ -1,6 +1,6 @@
 organization := "org.onion_lang"
 
-name := "jsonic"
+name := "jsonda"
 
 version := "0.0.1"
 
@@ -32,6 +32,6 @@ scalacOptions ++= Seq("-deprecation","-unchecked")
 initialCommands in console += {
   Iterator(
     "net.liftweb.json._",
-    "org.onion_lang.jsonic.Jsonic._"
+    "org.onion_lang.jsonda.Implicits._"
   ).map("import "+).mkString("\n")
 }
