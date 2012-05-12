@@ -33,15 +33,31 @@ import net.liftweb.json.JsonAST
 class Implicits {
   private[this] val values = new DynamicVariable[List[JsonAST.JField]](null)
   
-  class Binder(override val self: String) extends PimpedType[String] {
+  /**
+   * A class for extending String methods in  *Pimp my library* pattern".
+   */
+  class BinderP(override val self: String) extends PimpedType[String] {
+    
+    /**
+     * If this method is called inside % method call such as followings:
+     * {{{
+     *   % {
+     *     '$key :- $value
+     *   }
+     * }}}
+     * then, the ("$key", $value) pair is added as object's property.
+     * 
+     * Note that thie method throws Exceptions when it is called
+     * outside of % method call.
+     */
     def :-(value: JsonAST.JValue) {
       values.value = JsonAST.JField(self, value) :: values.value
     }
   }
   
-  implicit def makeBinderFromString(arg: String): Binder = new Binder(arg)
+  implicit def makeBinderFromString(arg: String): BinderP = new BinderP(arg)
   
-  implicit def makeBinderFromSymbol(arg: Symbol): Binder = new Binder(arg.name) 
+  implicit def makeBinderFromSymbol(arg: Symbol): BinderP = new BinderP(arg.name) 
   
   implicit def int2JInt(arg: Int): JsonAST.JInt = JsonAST.JInt(arg)
   
@@ -51,6 +67,10 @@ class Implicits {
   
   implicit def double2JDouble(arg: Double): JsonAST.JDouble = JsonAST.JDouble(arg)
   
+  /**
+   * Constructs an object which type is [[net.liftweb.json.JsonAST.JObject].
+   * The object is determined by the result of evaluation of body.
+   */
   def %(body: => Any): JsonAST.JObject = {
     values.withValue(List()) {
       body
@@ -58,6 +78,10 @@ class Implicits {
     }
   }
   
+  /**
+   * Constructs an object of [net.liftweb.json.JsonAST.JArray].
+   * The elements of the array are $elements.
+   */
   def $(elements: JsonAST.JValue*): JsonAST.JArray = JsonAST.JArray(elements.toList)
 }
 
