@@ -36,7 +36,7 @@ class Implicits {
   /**
    * A class for extending String methods in  *Pimp my library* pattern".
    */
-  class BinderP(override val self: String) extends PimpedType[String] {
+  class PBinder(override val self: String) extends PimpedType[String] {
     
     /**
      * If this method is called inside % method call such as followings:
@@ -55,9 +55,9 @@ class Implicits {
     }
   }
   
-  implicit def makeBinderFromString(arg: String): BinderP = new BinderP(arg)
+  implicit def makeBinderFromString(arg: String): PBinder = new PBinder(arg)
   
-  implicit def makeBinderFromSymbol(arg: Symbol): BinderP = new BinderP(arg.name) 
+  implicit def makeBinderFromSymbol(arg: Symbol): PBinder = new PBinder(arg.name) 
   
   implicit def int2JInt(arg: Int): JsonAST.JInt = JsonAST.JInt(arg)
   
