@@ -35,20 +35,21 @@ class Implicits {
   
   /**
    * A class for extending String methods in  *Pimp my library* pattern".
+   * @param underlying String object to be extended
    */
   class PBinder(override val underlying: String) extends PimpedType[String] {
-    
     /**
      * If this method is called inside % method call such as followings:
      * {{{
      *   % {
-     *     '$key :- $value
+     *     `key` :- `value`
      *   }
      * }}}
-     * then, the ("$key", $value) pair is added as object's property.
+     * then, the (`key`, `value`) pair is added as object's property.
      * 
-     * Note that thie method throws Exceptions when it is called
+     * Note that this method throws Exceptions when it is called
      * outside of % method call.
+     * @param value value corresponds key, which is actually `underlying`.
      */
     def :-(value: JsonAST.JValue) {
       values.value = JsonAST.JField(underlying, value) :: values.value
@@ -102,9 +103,11 @@ class Implicits {
   
   /**
    * Constructs an object of [net.liftweb.json.JsonAST.JArray].
-   * The elements of the array are $elements.
+   * The elements of the array are `elements`.
+   * @param elements var-args of [[net.liftweb.json.JsonAST.JValue]], which are elements of [[net.liftweb.json.JsonAST.JArray]]
+   * @return [[net.liftweb.json.JsonAST.JArray]], which elements is `elements`.
    */
-  def $(elements: JsonAST.JValue*): JsonAST.JArray = JsonAST.JArray(elements.toList)
+   def $(elements: JsonAST.JValue*): JsonAST.JArray = JsonAST.JArray(elements.toList)
 }
 
 /**

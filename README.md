@@ -16,7 +16,7 @@ adding the following lines to your build.sbt.
 
     resolver += "kmizu-repo"  at "http://kmizu.github.com/maven/"
     
-    libraryDependencies += "org.onion_lang" %% "jsonda"  % "0.0.1"
+    libraryDependencies += "org.onion_lang" %% "jsonda"  % "0.0.2"
 
 # For Developer
 
