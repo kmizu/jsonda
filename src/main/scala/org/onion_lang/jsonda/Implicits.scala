@@ -1,6 +1,9 @@
 package org.onion_lang.jsonda
 import scala.util.DynamicVariable
 import net.liftweb.json.JsonAST
+import net.liftweb.json._
+import xml.Document
+import text.Document
 
 /** == Overview ==
  * Provides a DSL for constructing JSON object(based on [[net.liftweb.json.JsonAST.JValue]]).
@@ -54,7 +57,17 @@ class Implicits {
       values.value = JsonAST.JField(self, value) :: values.value
     }
   }
-  
+
+  /**
+   * "A class for extending JsonAST.JValue in *Pimmp my lirary pattern"
+   * to add methods for serialization.
+   * @param self a value of the type to extend.
+   */
+  class PJSON(override val self: JsonAST.JValue) extends PimpedType[JsonAST.JValue] {
+    def json: String = pretty(render(self))
+    def render: Document = net.liftweb.json.render(self)
+  }
+
   implicit def makeBinderFromString(arg: String): PBinder = new PBinder(arg)
   
   implicit def makeBinderFromSymbol(arg: Symbol): PBinder = new PBinder(arg.name) 
@@ -66,6 +79,8 @@ class Implicits {
   implicit def boolean2JBool(arg: Boolean): JsonAST.JBool = JsonAST.JBool(arg)
   
   implicit def double2JDouble(arg: Double): JsonAST.JDouble = JsonAST.JDouble(arg)
+
+  implicit def pimpJsonAST(arg: JsonAST.JValue): PJSON = new PJSON(arg)
   
   /**
    * Constructs an object which type is [[net.liftweb.json.JsonAST.JObject].

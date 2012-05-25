@@ -2,7 +2,7 @@ organization := "org.onion_lang"
 
 name := "jsonda"
 
-version := "0.0.1"
+version := "0.0.2-SNAPTHOT"
 
 scalaVersion := "2.9.1"
 
