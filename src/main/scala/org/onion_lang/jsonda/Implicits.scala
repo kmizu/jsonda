@@ -1,9 +1,6 @@
 package org.onion_lang.jsonda
 import scala.util.DynamicVariable
-import net.liftweb.json.JsonAST
 import net.liftweb.json._
-import xml.Document
-import text.Document
 
 /** == Overview ==
  * Provides a DSL for constructing JSON object(based on [[net.liftweb.json.JsonAST.JValue]]).
@@ -39,7 +36,7 @@ class Implicits {
   /**
    * A class for extending String methods in  *Pimp my library* pattern".
    */
-  class PBinder(override val self: String) extends PimpedType[String] {
+  class PBinder(override val underlying: String) extends PimpedType[String] {
     
     /**
      * If this method is called inside % method call such as followings:
@@ -54,19 +51,25 @@ class Implicits {
      * outside of % method call.
      */
     def :-(value: JsonAST.JValue) {
-      values.value = JsonAST.JField(self, value) :: values.value
+      values.value = JsonAST.JField(underlying, value) :: values.value
     }
   }
 
   /**
    * "A class for extending JsonAST.JValue in *Pimp my lirary pattern"
    * to add methods for serialization.
-   * @param self a value of the type to extend.
+   * @param underlying a value of the type to extend.
    */
-  class PJSON(override val self: JsonAST.JValue) extends PimpedType[JsonAST.JValue] {
-    def dump(compact: Boolean=false): String = {
-      val source = pretty(render(self))
-      if(compact) compact(source) else source
+  class PJSON(override val underlying: JsonAST.JValue) extends PimpedType[JsonAST.JValue] {
+
+    /**
+     * Dump underlying [[net.liftweb.JsonAST.JValue]] object as JSON String.
+     * @param compaction if true, dumped JSON is compact version.  Otherwise, the JSON is pretty printed.
+     * @return
+     */
+    def dump(compaction: Boolean=false): String = {
+      val source = render(underlying)
+      if(compaction) compact(source) else pretty(source)
     }
   }
 
@@ -85,7 +88,7 @@ class Implicits {
   implicit def pimpJsonAST(arg: JsonAST.JValue): PJSON = new PJSON(arg)
   
   /**
-   * Constructs an object which type is [[net.liftweb.json.JsonAST.JObject].
+   * Constructs an object which type is [[net.liftweb.json.JsonAST.JObject]].
    * The object is determined by the result of evaluation of body.
    */
   def %(body: => Any): JsonAST.JObject = {
@@ -107,6 +110,10 @@ class Implicits {
  * You can use Implicits object instead of (new Implicits) as the followings:
  * {{{
  * import org.onion_lang.jsonda.Implicits._
+ * val jsonObject = %{
+ *   'name :- "A Person"
+ *   'age :- 28
+ * }
  * }}}
  */
 object Implicits extends Implicits

@@ -5,5 +5,5 @@ package org.onion_lang.jsonda
 trait PimpedType[T] {
   /** The instance that extended by PimpedType[T]
    */
-  val self: T
+  val underlying: T
 }
