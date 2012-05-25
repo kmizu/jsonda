@@ -59,6 +59,7 @@ class Implicits {
    * "A class for extending JsonAST.JValue in *Pimp my lirary pattern"
    * to add methods for serialization.
    * @param underlying a value of the type to extend.
+   * @since 0.0.2
    */
   class PJSON(override val underlying: JsonAST.JValue) extends PimpedType[JsonAST.JValue] {
 
@@ -66,6 +67,7 @@ class Implicits {
      * Dump underlying [[net.liftweb.JsonAST.JValue]] object as JSON String.
      * @param compaction if true, dumped JSON is compact version.  Otherwise, the JSON is pretty printed.
      * @return
+     * @since 0.0.2
      */
     def dump(compaction: Boolean=false): String = {
       val source = render(underlying)
