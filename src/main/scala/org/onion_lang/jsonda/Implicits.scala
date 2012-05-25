@@ -59,13 +59,15 @@ class Implicits {
   }
 
   /**
-   * "A class for extending JsonAST.JValue in *Pimmp my lirary pattern"
+   * "A class for extending JsonAST.JValue in *Pimp my lirary pattern"
    * to add methods for serialization.
    * @param self a value of the type to extend.
    */
   class PJSON(override val self: JsonAST.JValue) extends PimpedType[JsonAST.JValue] {
-    def json: String = pretty(render(self))
-    def render: Document = net.liftweb.json.render(self)
+    def dump(compact: Boolean=false): String = {
+      val source = pretty(render(self))
+      if(compact) compact(source) else source
+    }
   }
 
   implicit def makeBinderFromString(arg: String): PBinder = new PBinder(arg)
