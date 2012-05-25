@@ -2,7 +2,7 @@ package org.onion_lang.jsonda.example
 import org.onion_lang.jsonda.Implicits._
 
 /**
- * An example program using JsonBuilder.
+ * A simple Jsonda example program.
  */
 object JsonicExample {
   def main(args: Array[String]): Unit = {
@@ -14,8 +14,19 @@ object JsonicExample {
         "b" :- $(6, 7, %{ "xx" :- "yy" })
       }
     }
-    println(arb)
+    println(arb.dump())
+    /*
+     * The above expression print the following result:
+     * { "x":10, "y":20,
+     *   "z":{"a":[1, 2, 3, 4, 5], "b":[6, 7, {"xx":"yy"}]}
+     * }
+     */
+
     val person = %{ 'name :- "Kota Mizushima"; 'age :- 28 }
-    println(person)
+    /*
+     * The above expression print the following result:
+     * { "name":"Kota Mizushima", "age":28 }
+     */
+    println(person.dump())
   }
 }
