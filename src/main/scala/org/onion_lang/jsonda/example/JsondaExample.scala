@@ -4,7 +4,7 @@ import org.onion_lang.jsonda.Implicits._
 /**
  * A simple Jsonda example program.
  */
-object JsonicExample {
+object JsondaExample {
   def main(args: Array[String]): Unit = {
     val arb = %{
       "x" :- 10
