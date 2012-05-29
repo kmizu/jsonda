@@ -6,7 +6,7 @@ import org.onion_lang.jsonda.Implicits._
  */
 object JsondaExample {
   def main(args: Array[String]): Unit = {
-    val arb = %{
+    val arc = %{
       "x" :- 10
       "y" :- 20
       "z" :- %{
@@ -14,7 +14,7 @@ object JsondaExample {
         "b" :- $(6, 7, %{ "xx" :- "yy" })
       }
     }
-    println(arb.dump())
+    println(arc.dump())
     /*
      * The above expression print the following result:
      * { "x":10, "y":20,
