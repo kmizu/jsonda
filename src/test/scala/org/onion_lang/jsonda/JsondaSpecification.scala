@@ -5,19 +5,37 @@ package org.onion_lang.jsonda
 import org.onion_lang.jsonda.Implicits._
 import org.specs2.mutable.Specification
 import net.liftweb.json.JsonAST
+import net.liftweb.json.JsonAST.JArray
 
 /**
  * @author Mizushima
  *
  */
 class JsondaSpecification extends Specification {
-  """a Implicits %{'name :- "Kota Mizushima", 'age :- 18}}}""" should {
+  """%{'name :- "Kota Mizushima", 'age :- 18}}}""" should {
       val person = %{'name :- "Kota Mizushima"; 'age :- 28} 
     """have name "Kota Mizushima""" in {
-      (person \\ "name").asInstanceOf[JsonAST.JString].values must ===("Kota Mizushima")
+      (person \\ "name").values must ===("Kota Mizushima")
     }
     """have age 28""" in {
-      (person \\ "age").asInstanceOf[JsonAST.JInt].values.toInt must ===(28)
+      (person \\ "age").values must ===(28)
     }
+  }
+
+  """%{'str :- "a String"; 'arr :- $(1, 2, 3, 4, 5); 'obj :- %{ 'x :- 1; 'y :- 2}}""" should {
+    val data = %{'str :- "a String"; 'arr :- $(1, 2, 3, 4, 5); 'obj :- %{ 'x :- 1; 'y :- 2 }}
+    """have str "a String""""" in {
+      (data \\ "str").values must ===("a String")
+    }
+    """have arr [1, 2, 3, 4, 5]""" in {
+      (data \\ "arr").asInstanceOf[JsonAST.JArray] must ===(JsonAST.JArray(List(1, 2, 3, 4, 5)))
+    }
+    """have obj which x == 1 and y == 2""" in {
+      val obj = (data \\ "obj").asInstanceOf[JsonAST.JObject]
+      (obj \ "x").values must ===(1)
+      (obj \ "y").values must ===(2)
+
+    }
+
   }
 }
