@@ -42,12 +42,14 @@ Jsonda is very simple DSL for creating JSON objects.  Notations are followings:
 
 Here are the way to create JSON using Jsonda:
 
+```scala
     import org.onion_lang.jsonda.Implicits._
     
     val person = %{
       'name :- "Kota Mizushima"
       'age :- 28
     }
+```
     
 The type of person is net.liftweb.json.JsonAST.JValue.  If you are familiar with lift-json, you can easily manipulate the JSON object.
 
