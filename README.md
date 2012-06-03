@@ -15,10 +15,9 @@ If you woule like to use Jsonda with sbt, what you need to do is only
 adding the following lines to your build.sbt.
 
 ```scala
-
-    resolver += "kmizu-repo"  at "http://kmizu.github.com/maven/"
+resolver += "kmizu-repo"  at "http://kmizu.github.com/maven/"
     
-    libraryDependencies += "org.onion_lang" %% "jsonda"  % "0.0.2"
+libraryDependencies += "org.onion_lang" %% "jsonda"  % "0.0.2"
 ```
 
 # For Developer
@@ -46,12 +45,12 @@ Jsonda is very simple DSL for creating JSON objects.  Notations are followings:
 Here are the way to create JSON using Jsonda:
 
 ```scala
-    import org.onion_lang.jsonda.Implicits._
+import org.onion_lang.jsonda.Implicits._
     
-    val person = %{
-      'name :- "Kota Mizushima"
-      'age :- 28
-    }
+val person = %{
+  'name :- "Kota Mizushima"
+  'age :- 28
+}
 ```
     
 The type of person is net.liftweb.json.JsonAST.JValue.  If you are familiar with lift-json, you can easily manipulate the JSON object.
