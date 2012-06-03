@@ -14,9 +14,12 @@ until next Saturday.
 If you woule like to use Jsonda with sbt, what you need to do is only
 adding the following lines to your build.sbt.
 
+```scala
+
     resolver += "kmizu-repo"  at "http://kmizu.github.com/maven/"
     
     libraryDependencies += "org.onion_lang" %% "jsonda"  % "0.0.2"
+```
 
 # For Developer
 
