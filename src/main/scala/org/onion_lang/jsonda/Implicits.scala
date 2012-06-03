@@ -87,6 +87,10 @@ class Implicits {
   implicit def boolean2JBool(arg: Boolean): JsonAST.JBool = JsonAST.JBool(arg)
   
   implicit def double2JDouble(arg: Double): JsonAST.JDouble = JsonAST.JDouble(arg)
+  
+  implicit def bigInt2JString(arg: BigInt): JsonAST.JString = JsonAST.JString(arg.toString)
+  
+  implicit def bigDecimal2String(arg: BigDecimal): JsonAST.JString = JsonAST.JString(arg.toString)
 
   implicit def pimpJsonAST(arg: JsonAST.JValue): PJSON = new PJSON(arg)
   
