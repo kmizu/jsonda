@@ -14,7 +14,7 @@ adding the following lines to your build.sbt.
 ```scala
 resolver += "kmizu-repo"  at "http://kmizu.github.com/maven/"
     
-libraryDependencies += "org.onion_lang" %% "jsonda"  % "0.0.2"
+libraryDependencies += "org.onion_lang" %% "jsonda"  % "0.1"
 ```
 
 # For Developer
@@ -54,3 +54,5 @@ val person = %{
     
 The type of person is net.liftweb.json.JsonAST.JValue.  If you are familiar with lift-json, you can easily manipulate JSON objects.
 
+This software is distributed under modified BSD License. See:
+LICENSE.txt
