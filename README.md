@@ -54,5 +54,14 @@ val person = %{
     
 The type of person is net.liftweb.json.JsonAST.JValue.  If you are familiar with lift-json, you can easily manipulate JSON objects.
 
+# Scaladoc
+
+Scaladoc is available via the following links:
+
+* [Scaladoc(0.0.2)](http://kmizu.github.com/jsonda/api/0.0.2/)
+* [Scaladoc(0.1)](http://kmizu.github.com/jsonda/api/0.1)
+
+# License
+
 This software is distributed under modified BSD License. See:
 LICENSE.txt
