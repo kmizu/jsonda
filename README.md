@@ -6,10 +6,7 @@ understand what it does.  Although Jsonda was formerly Jsonic, I was told that
 there is already another Jsonic library in Java by @okapies san.  Then, I renamed
 Jsonic to Jsonda.
 
-Work for renaming dosn't complete yet now.  work for renaming will complete
-until next Saturday.
-
-# Using sbt
+# Using with sbt
 
 If you woule like to use Jsonda with sbt, what you need to do is only
 adding the following lines to your build.sbt.
@@ -36,6 +33,8 @@ Jsonda is very simple DSL for creating JSON objects.  Notations are followings:
 * primitive: 
   * number(integer): e.g. 100
   * number(double): e.g. 10.5
+  * string (from BigInt): e.g. 100000000000000000000
+  * string (from BigDecimal): e.g. 1.123456789
   * string: e.g. "Hello, World!"
   * boolean: e.g. true 
   * null: null
@@ -53,5 +52,5 @@ val person = %{
 }
 ```
     
-The type of person is net.liftweb.json.JsonAST.JValue.  If you are familiar with lift-json, you can easily manipulate the JSON object.
+The type of person is net.liftweb.json.JsonAST.JValue.  If you are familiar with lift-json, you can easily manipulate JSON objects.
 
