@@ -1,12 +1,10 @@
-organization := "com.github"
+organization := "com.github.kmizu"
 
 name := "jsonda"
 
-version := "0.2-snapshot"
+version := "0.2"
 
 scalaVersion := "2.9.1"
-
-seq(assemblySettings: _*)
 
 libraryDependencies ++= Seq(
   "net.liftweb" %% "lift-json" % "2.4"
@@ -15,23 +13,41 @@ libraryDependencies ++= Seq(
 libraryDependencies ++= Seq(
   "org.specs2" %% "specs2" % "1.8.2" % "test"
 )
-  
-// Read here for optional dependencies: 
-// http://etorreborre.github.com/specs2/guide/org.specs2.guide.Runners.html#Dependencies
-resolvers ++= Seq(
-  "snapshots" at "http://oss.sonatype.org/content/repositories/snapshots", 
-  "releases"  at "http://oss.sonatype.org/content/repositories/releases"
-)
-
-publishTo := Some(Resolver.file("Github Pages", Path.userHome / "git" / "kmizu.github.com" / "maven" asFile)(Patterns(true, Resolver.mavenStyleBasePattern)))
-
-publishMavenStyle := true
 
 scalacOptions ++= Seq("-deprecation","-unchecked")
 
-initialCommands in console += {
-  Iterator(
-    "net.liftweb.json._",
-    "com.github.jsonda.Implicits._"
-  ).map("import "+).mkString("\n")
+publishMavenStyle := true
+
+publishTo <<= version { (v: String) =>
+  val nexus = "https://oss.sonatype.org/"
+  if (v.trim.endsWith("SNAPSHOT")) 
+      Some("snapshots" at nexus + "content/repositories/snapshots") 
+  else
+      Some("releases"  at nexus + "service/local/staging/deploy/maven2")
 }
+
+publishArtifact in Test := false
+
+pomIncludeRepository := { _ => false }
+
+pomExtra := (
+  <url>https://github.com/kmizu/jsonda</url>
+  <licenses>
+    <license>
+      <name>BSD-style</name>
+      <url>http://www.opensource.org/licenses/bsd-license.php</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <scm>
+    <url>git@github.com:kmizu/jsonda.git</url>
+    <connection>scm:git:git@github.com:kmizu/jsonda.git</connection>
+  </scm>
+  <developers>
+    <developer>
+      <id>kmizu</id>
+      <name>Kota Mizushima</name>
+      <url>https://github.com/kmizu</url>
+    </developer>
+  </developers>
+)
