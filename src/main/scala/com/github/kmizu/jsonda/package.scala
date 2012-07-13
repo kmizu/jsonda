@@ -1,4 +1,4 @@
-package com.github.kmizu.jsonda
+package com.github.kmizu
 
 package object jsonda extends Implicits {
 
