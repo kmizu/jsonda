@@ -1,11 +1,11 @@
 /**
  *
  */
-package org.onion_lang.jsonda
-import org.onion_lang.jsonda.Implicits._
+package com.github.kmizu.jsonda
+
+import com.github.kmizu.jsonda.Implicits._
 import org.specs2.mutable.Specification
 import net.liftweb.json.JsonAST
-import net.liftweb.json.JsonAST.JArray
 
 /**
  * @author Mizushima
@@ -13,7 +13,9 @@ import net.liftweb.json.JsonAST.JArray
  */
 class JsondaSpecification extends Specification {
   """%{'name :- "Kota Mizushima", 'age :- 18}}}""" should {
-      val person = %{'name :- "Kota Mizushima"; 'age :- 28} 
+    val person = % {
+      'name :- "Kota Mizushima"; 'age :- 28
+    }
     """have name "Kota Mizushima""" in {
       (person \\ "name").values must ===("Kota Mizushima")
     }
@@ -23,7 +25,11 @@ class JsondaSpecification extends Specification {
   }
 
   """%{'str :- "a String"; 'arr :- $(1, 2, 3, 4, 5); 'obj :- %{ 'x :- 1; 'y :- 2}}""" should {
-    val data = %{'str :- "a String"; 'arr :- $(1, 2, 3, 4, 5); 'obj :- %{ 'x :- 1; 'y :- 2 }}
+    val data = % {
+      'str :- "a String"; 'arr :- $(1, 2, 3, 4, 5); 'obj :- % {
+        'x :- 1; 'y :- 2
+      }
+    }
     """have str "a String""""" in {
       (data \\ "str").values must ===("a String")
     }

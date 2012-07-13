@@ -1,17 +1,20 @@
-package org.onion_lang.jsonda.example
-import org.onion_lang.jsonda.Implicits._
+package com.github.kmizu.jsonda.example
+
+import com.github.kmizu.jsonda.Implicits._
 
 /**
  * A simple Jsonda example program.
  */
 object JsondaExample {
   def main(args: Array[String]): Unit = {
-    val arc = %{
+    val arc = % {
       "x" :- 10
       "y" :- 20
-      "z" :- %{
+      "z" :- % {
         "a" :- $(1, 2, 3, 4, 5)
-        "b" :- $(6, 7, %{ "xx" :- "yy" })
+        "b" :- $(6, 7, % {
+          "xx" :- "yy"
+        })
       }
     }
     println(arc.dump())
@@ -22,7 +25,9 @@ object JsondaExample {
      * }
      */
 
-    val person = %{ 'name :- "Kota Mizushima"; 'age :- 28 }
+    val person = % {
+      'name :- "Kota Mizushima"; 'age :- 28
+    }
     /*
      * The above expression print the following result:
      * { "name":"Kota Mizushima", "age":28 }

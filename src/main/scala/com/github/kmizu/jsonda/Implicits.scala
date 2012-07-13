@@ -1,38 +1,40 @@
-package org.onion_lang.jsonda
+package com.github.kmizu.jsonda
+
 import scala.util.DynamicVariable
 import net.liftweb.json._
 
-/** == Overview ==
+/**== Overview ==
  * Provides a DSL for constructing JSON object(based on [[net.liftweb.json.JsonAST.JValue]]).
  * To use the DSL, the following code is needed for preparation:
- * 
+ *
  * {{{
- * val builder = new org.onion_lang.jsonda.Implicits
+ * val builder = new com.github.kmizu.jsonda.Implicits
  * import builder._
  * }}}
- * 
+ *
  * After the above code, users construct JSON object as the followings:
  * {{{
  * val jsonObject = %{
  *   'name :- "A Person"
  *   'age :- 28
- *   'nick_names :- $("foo", "hoge", "bar") 
+ *   'nick_names :- $("foo", "hoge", "bar")
  * }
  * }}}
- * 
+ *
  * To prevent pollution of namespace, it is recommended that this DSL is used
  * inside blocks:
  * {{{
  * {
- *   val builder = new org.onion_lang.jsonda.Implicits
- *   import builder._
- *   val person = %{'name :- "A Person"; 'age :- 28}
+ * val builder = new com.github.kmizu.jsonda.Implicits
+ *
+ * import builder._
+ * val person = %{'name :- "A Person"; 'age :- 28}
  * }
  * }}}
  */
 class Implicits {
   private[this] val values = new DynamicVariable[List[JsonAST.JField]](null)
-  
+
   /**
    * A class for extending String methods in  *Pimp my library* pattern".
    * @param underlying String object to be extended
@@ -46,7 +48,7 @@ class Implicits {
      *   }
      * }}}
      * then, the (`key`, `value`) pair is added as object's property.
-     * 
+     *
      * Note that this method throws Exceptions when it is called
      * outside of % method call.
      * @param value value corresponds key, which is actually `underlying`.
@@ -70,30 +72,30 @@ class Implicits {
      * @return
      * @since 0.0.2
      */
-    def dump(compaction: Boolean=false): String = {
+    def dump(compaction: Boolean = false): String = {
       val source = render(underlying)
-      if(compaction) compact(source) else pretty(source)
+      if (compaction) compact(source) else pretty(source)
     }
   }
 
   implicit def makeBinderFromString(arg: String): PBinder = new PBinder(arg)
-  
-  implicit def makeBinderFromSymbol(arg: Symbol): PBinder = new PBinder(arg.name) 
-  
+
+  implicit def makeBinderFromSymbol(arg: Symbol): PBinder = new PBinder(arg.name)
+
   implicit def int2JInt(arg: Int): JsonAST.JInt = JsonAST.JInt(arg)
-  
+
   implicit def string2JString(arg: String): JsonAST.JString = JsonAST.JString(arg)
-  
+
   implicit def boolean2JBool(arg: Boolean): JsonAST.JBool = JsonAST.JBool(arg)
-  
+
   implicit def double2JDouble(arg: Double): JsonAST.JDouble = JsonAST.JDouble(arg)
-  
+
   implicit def bigInt2JString(arg: BigInt): JsonAST.JString = JsonAST.JString(arg.toString)
-  
+
   implicit def bigDecimal2String(arg: BigDecimal): JsonAST.JString = JsonAST.JString(arg.toString)
 
   implicit def pimpJsonAST(arg: JsonAST.JValue): PJSON = new PJSON(arg)
-  
+
   /**
    * Constructs an object which type is [[net.liftweb.json.JsonAST.JObject]].
    * The object is determined by the result of evaluation of body.
@@ -104,21 +106,21 @@ class Implicits {
       JsonAST.JObject(values.value)
     }
   }
-  
+
   /**
    * Constructs an object of [net.liftweb.json.JsonAST.JArray].
    * The elements of the array are `elements`.
    * @param elements var-args of [[net.liftweb.json.JsonAST.JValue]], which are elements of [[net.liftweb.json.JsonAST.JArray]]
    * @return [[net.liftweb.json.JsonAST.JArray]], which elements is `elements`.
    */
-   def $(elements: JsonAST.JValue*): JsonAST.JArray = JsonAST.JArray(elements.toList)
+  def $(elements: JsonAST.JValue*): JsonAST.JArray = JsonAST.JArray(elements.toList)
 }
 
 /**
  * It is shorthand of (new Implicits).
  * You can use Implicits object instead of (new Implicits) as the followings:
  * {{{
- * import org.onion_lang.jsonda.Implicits._
+ * import com.github.kmizu.jsonda.Implicits._
  * val jsonObject = %{
  *   'name :- "A Person"
  *   'age :- 28
