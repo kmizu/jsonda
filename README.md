@@ -26,31 +26,71 @@ Jsonda is very simple DSL for creating JSON objects.  Notations are followings:
 
 * object: 
     %{ $key1 :- $value1; $key2 :- $value2; ... }
+
+or
+
+    %{ $key1 :- $value1
+       $key2 :- $value2 }
+
+Both have same meanings.
+
 * array:
     $($value1, $value2, ...)
 * primitive: 
-  * number(integer): e.g. 100
-  * number(double): e.g. 10.5
-  * string (from BigInt): e.g. 100000000000000000000
-  * string (from BigDecimal): e.g. 1.123456789
-  * string: e.g. "Hello, World!"
-  * boolean: e.g. true 
-  * null: null
+  * number(integer):
+      100
+      200
+      300
+  * number(double):
+      10.5
+      20.5
+  * string (from Scala's BigInt):
+      BigInt("100000000000000000000")
+      BigInt("2000000000000000000000000")
+  * string (from Scala's BigDecimal):
+      BigDecimal("1.123456789"):
+  * string:
+      "Hello, World!"
+      "Hello, Scala!"
+  * boolean:
+      true
+      false
+  * null:
+      null
 
 # Quick Start
 
 Here are the way to create JSON using Jsonda:
 
 ```scala
-import org.onion_lang.jsonda.Implicits._
-    
+import com.github.kmizu.jsonda.Implicits._
+
 val person = %{
   'name :- "Kota Mizushima"
-  'age :- 28
+  'age :- 29
 }
 ```
     
 The type of person is net.liftweb.json.JsonAST.JValue.  If you are familiar with lift-json, you can easily manipulate JSON objects.
+
+Nested JSON can be written easily as the followings:
+
+```scala
+import com.github.kmizu.jsonda.Implicits._
+    
+val config = % {
+  'name :- "a config"
+  'debug :- false
+  'logging :- % {
+    'level :- "warn"
+    'verbose :- true
+  }
+  'optimization :- %{
+    'agressive :- true
+    'inline :- true
+  }
+}
+```
 
 # Scaladoc
 
