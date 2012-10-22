@@ -26,54 +26,74 @@ Jsonda is very simple DSL for creating JSON objects.  Notations are followings:
 
 * object: 
 
+```scala```
     %{ $key1 :- $value1; $key2 :- $value2; ... }
+```
 
 or
 
+```scala```
     %{ $key1 :- $value1
        $key2 :- $value2 }
+```
 
 Both have same meanings.
 
 * array:
 
+```scala```
     $($value1, $value2, ...)
+```
 
 * primitive: 
   * number(integer):
 
+```scala```
       100
       200
       300
+```
 
   * number(double):
 
+```scala```
       10.5
       20.5
+```
 
   * string (from Scala's BigInt):
 
+```scala```
       BigInt("100000000000000000000")
       BigInt("2000000000000000000000000")
+```
 
   * string (from Scala's BigDecimal):
 
+```scala```
       BigDecimal("1.123456789")
       BigDecimal("2.234568978")
+```
 
   * string:
 
+```scala```
       "Hello, World!"
       "Hello, Scala!"
+```
 
   * boolean:
 
+```scala```
       true
       false
+```
 
   * null:
 
+```scala```
       null
+```
 
 # Quick Start
 
