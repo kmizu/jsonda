@@ -25,6 +25,7 @@ libraryDependencies += "com.github.kmizu" %% "jsonda"  % "0.2"
 Jsonda is very simple DSL for creating JSON objects.  Notations are followings:
 
 * object: 
+
     %{ $key1 :- $value1; $key2 :- $value2; ... }
 
 or
@@ -35,27 +36,43 @@ or
 Both have same meanings.
 
 * array:
+
     $($value1, $value2, ...)
+
 * primitive: 
   * number(integer):
+
       100
       200
       300
+
   * number(double):
+
       10.5
       20.5
+
   * string (from Scala's BigInt):
+
       BigInt("100000000000000000000")
       BigInt("2000000000000000000000000")
+
   * string (from Scala's BigDecimal):
-      BigDecimal("1.123456789"):
+
+      BigDecimal("1.123456789")
+      BigDecimal("2.234568978")
+
   * string:
+
       "Hello, World!"
       "Hello, Scala!"
+
   * boolean:
+
       true
       false
+
   * null:
+
       null
 
 # Quick Start
