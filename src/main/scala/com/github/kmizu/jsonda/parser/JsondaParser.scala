@@ -7,8 +7,6 @@ package com.github.kmizu.jsonda.parser
  * can interpret each JSON data as you like.
  * However, the implementation is not started yet.
  */
-class JsondaParser
-
-object JsondaParser {
-
+trait JsondaParser[+A, I] {
+  def apply(input: I): A
 }
