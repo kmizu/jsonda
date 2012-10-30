@@ -68,13 +68,13 @@ class Implicits {
 
     /**
      * Dump underlying [[net.liftweb.JsonAST.JValue]] object as JSON String.
-     * @param compaction if true, dumped JSON is compact version.  Otherwise, the JSON is pretty printed.
+     * @param compress if true, dumped JSON is compact version.  Otherwise, the JSON is pretty printed.
      * @return
      * @since 0.0.2
      */
-    def dump(compaction: Boolean = false): String = {
+    def dump(compress: Boolean = false): String = {
       val source = render(underlying)
-      if (compaction) compact(source) else pretty(source)
+      if (compress) compact(source) else pretty(source)
     }
   }
 
