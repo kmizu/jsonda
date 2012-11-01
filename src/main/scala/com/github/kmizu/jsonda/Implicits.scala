@@ -84,9 +84,13 @@ class Implicits {
 
   implicit def int2JInt(arg: Int): JsonAST.JInt = JsonAST.JInt(arg)
 
+  implicit def long2JInt(arg: Long): JsonAST.JInt = JsonAST.JInt(arg)
+
   implicit def string2JString(arg: String): JsonAST.JString = JsonAST.JString(arg)
 
   implicit def boolean2JBool(arg: Boolean): JsonAST.JBool = JsonAST.JBool(arg)
+
+  implicit def float2JDouble(arg: Float): JsonAST.JDouble = JsonAST.JDouble(arg)
 
   implicit def double2JDouble(arg: Double): JsonAST.JDouble = JsonAST.JDouble(arg)
 
