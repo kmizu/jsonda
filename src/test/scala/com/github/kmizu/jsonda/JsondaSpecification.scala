@@ -44,4 +44,22 @@ class JsondaSpecification extends Specification {
     }
 
   }
+
+  """%{'long_key :- 100L}""" should {
+    val data = %{
+      'long_key :- 100L
+    }
+    """have long_key 100""""" in {
+      (data \\ "long_key").values must_==(100)
+    }
+  }
+
+  """%{'float_key :- 1.5F}""" should {
+    val data = %{
+      'float_key :- 1.5f
+    }
+    """have float_key 1.5""" in {
+      (data \\ "float_key").values must_==(1.5F)
+    }
+  }
 }
