@@ -9,10 +9,11 @@ Jsonic to Jsonda.
 # Using with sbt
 
 If you woule like to use Jsonda with sbt, what you need to do is only
-adding the following lines to your build.sbt.
+adding the following lines to your build.sbt.  There exists jsonda 0.2.1
+for both Scala 2.9.1 and Scala 2.9.2.
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda"  % "0.2"
+libraryDependencies += "com.github.kmizu" %% "jsonda"  % "0.2.1"
 ```
 
 # For Developer
@@ -46,7 +47,7 @@ Both have same meanings.
 ```
 
 * primitive: 
-  * number(integer):
+  * number(Int):
 
 ```scala```
       100
@@ -54,7 +55,21 @@ Both have same meanings.
       300
 ```
 
-  * number(double):
+  * number (Long)
+
+```scala```
+      1000000000000L
+      2000000000000L
+      3000000000000L
+```
+
+  * number(Float):
+```scala``
+      10.5F
+      12.0F
+```
+
+  * number(Double):
 
 ```scala```
       10.5
@@ -133,6 +148,7 @@ val config = % {
 
 Scaladoc is available via the following links:
 
+* [Scaladoc(0.2.1)](http://kmizu.github.com/jsonda/api/0.2.1)
 * [Scaladoc(0.2)](http://kmizu.github.com/jsonda/api/0.2)
 * [Scaladoc(0.1)](http://kmizu.github.com/jsonda/api/0.1)
 * [Scaladoc(0.0.2)](http://kmizu.github.com/jsonda/api/0.0.2/)
