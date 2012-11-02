@@ -1,0 +1,271 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>org.onion_lang.jsonda</title>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link type="text/css" media="screen" rel="stylesheet" href="../../../lib/template.css" />
+      <script type="text/javascript" src="../../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img src="../../../lib/package_big.png" />
+        <p id="owner"><a name="org" class="extype" href="../../package.html">org</a>.<a name="org.onion_lang" class="extype" href="../package.html">onion_lang</a></p>
+        <h1>jsonda</h1>
+      </div>
+
+      <h4 class="signature" id="signature">
+      <span class="kind">package</span>
+      <span class="symbol"> 
+        <span class="name">jsonda</span>
+        
+        
+      </span>
+      </h4>
+      
+          <div class="fullcommenttop" id="comment"></div>
+        
+
+      <div id="template">
+
+        <div id="mbrsel">
+          <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+          
+          
+          <div id="visbl">
+              <span class="filtertype">Visibility</span>
+              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+            </div>
+        </div>
+
+        
+
+        <div class="types members" id="types">
+              <h3>Type Members</h3>
+              <ol><li visbl="pub" name="org.onion_lang.jsonda.Implicits" data-isabs="false">
+      <a id="Implicits:Implicits"></a>
+      <h4 class="signature">
+      <span class="kind">class</span>
+      <span class="symbol"> 
+        <a href="Implicits.html"><span class="name">Implicits</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides a DSL for constructing JSON object(based on net.liftweb.json.JsonAST.JValue).</p>
+    </li><li visbl="pub" name="org.onion_lang.jsonda.Implicits.PBinder" data-isabs="false">
+      <a id="PBinder:PBinder"></a>
+      <h4 class="signature">
+      <span class="kind">class</span>
+      <span class="symbol"> 
+        <a href="Implicits$PBinder.html"><span class="name">PBinder</span></a>
+        
+        <span class="result"> extends PimpedType[String]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A class for extending String methods in  *Pimp my library* pattern&quot;.</p>
+    </li><li visbl="pub" name="org.onion_lang.jsonda.Implicits.PJSON" data-isabs="false">
+      <a id="PJSON:PJSON"></a>
+      <h4 class="signature">
+      <span class="kind">class</span>
+      <span class="symbol"> 
+        <a href="Implicits$PJSON.html"><span class="name">PJSON</span></a>
+        
+        <span class="result"> extends PimpedType[JValue]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">&quot;A class for extending JsonAST.</p>
+    </li><li visbl="pub" name="org.onion_lang.jsonda.PimpedType" data-isabs="true">
+      <a id="PimpedType:PimpedType[T]"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="PimpedType.html"><span class="name">PimpedType</span></a>
+        <span class="tparams">[<span name="T">T</span>]</span>
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Represents marker trait that types extending org.onion_lang.jsonic.PimpedType[T are just for &quot;extension method&quot; pattern.</p>
+    </li></ol>
+            </div>
+        
+        
+
+        <div class="values members" id="values">
+              <h3>Value Members</h3>
+              <ol><li visbl="pub" name="org.onion_lang.jsonda.Implicits#$" data-isabs="false">
+      <a id="$(JValue*):JArray"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">$</span>
+        
+        <span class="params">(<span name="elements">elements: <span name="net.liftweb.json.JsonAST.JValue" class="extype">JValue</span>*</span>)</span><span class="result">: <span name="net.liftweb.json.JsonAST.JArray" class="extype">JArray</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Constructs an object of [net.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an object of [net.liftweb.json.JsonAST.JArray].
+The elements of the array are <code>elements</code>.</p></div><dl class="paramcmts block"><dt class="param">elements</dt><dd class="cmt"><p>var-args of net.liftweb.json.JsonAST.JValue, which are elements of net.liftweb.json.JsonAST.JArray</p></dd><dt>returns</dt><dd class="cmt"><p>net.liftweb.json.JsonAST.JArray, which elements is <code>elements</code>.
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="org.onion_lang.jsonda.Implicits" class="extype" href="Implicits.html">Implicits</a></dd></dl></div>
+    </li><li visbl="pub" name="org.onion_lang.jsonda.Implicits#%" data-isabs="false">
+      <a id="%(⇒ Any):JObject"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">%</span>
+        
+        <span class="params">(<span name="body">body: ⇒ <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <span name="net.liftweb.json.JsonAST.JObject" class="extype">JObject</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Constructs an object which type is net.liftweb.json.JsonAST.JObject.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an object which type is net.liftweb.json.JsonAST.JObject.
+The object is determined by the result of evaluation of body.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="org.onion_lang.jsonda.Implicits" class="extype" href="Implicits.html">Implicits</a></dd></dl></div>
+    </li><li visbl="pub" name="org.onion_lang.jsonda.Implicits" data-isabs="false">
+      <a id="Implicits:Implicits"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="Implicits$.html"><span class="name">Implicits</span></a>
+        
+        <span class="result"> extends Implicits</span>
+      </span>
+      </h4>
+      <p class="comment cmt">It is shorthand of (new Implicits).</p>
+    </li><li visbl="pub" name="org.onion_lang.jsonda.Implicits#bigDecimal2String" data-isabs="false">
+      <a id="bigDecimal2String(BigDecimal):JString"></a>
+      <h4 class="signature">
+      <span class="kind">implicit def</span>
+      <span class="symbol"> 
+        <span class="name">bigDecimal2String</span>
+        
+        <span class="params">(<span name="arg">arg: BigDecimal</span>)</span><span class="result">: <span name="net.liftweb.json.JsonAST.JString" class="extype">JString</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>implicit </dd><dt>Definition Classes</dt><dd><a name="org.onion_lang.jsonda.Implicits" class="extype" href="Implicits.html">Implicits</a></dd></dl></div>
+    </li><li visbl="pub" name="org.onion_lang.jsonda.Implicits#bigInt2JString" data-isabs="false">
+      <a id="bigInt2JString(BigInt):JString"></a>
+      <h4 class="signature">
+      <span class="kind">implicit def</span>
+      <span class="symbol"> 
+        <span class="name">bigInt2JString</span>
+        
+        <span class="params">(<span name="arg">arg: BigInt</span>)</span><span class="result">: <span name="net.liftweb.json.JsonAST.JString" class="extype">JString</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>implicit </dd><dt>Definition Classes</dt><dd><a name="org.onion_lang.jsonda.Implicits" class="extype" href="Implicits.html">Implicits</a></dd></dl></div>
+    </li><li visbl="pub" name="org.onion_lang.jsonda.Implicits#boolean2JBool" data-isabs="false">
+      <a id="boolean2JBool(Boolean):JBool"></a>
+      <h4 class="signature">
+      <span class="kind">implicit def</span>
+      <span class="symbol"> 
+        <span class="name">boolean2JBool</span>
+        
+        <span class="params">(<span name="arg">arg: <span name="scala.Boolean" class="extype">Boolean</span></span>)</span><span class="result">: <span name="net.liftweb.json.JsonAST.JBool" class="extype">JBool</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>implicit </dd><dt>Definition Classes</dt><dd><a name="org.onion_lang.jsonda.Implicits" class="extype" href="Implicits.html">Implicits</a></dd></dl></div>
+    </li><li visbl="pub" name="org.onion_lang.jsonda.Implicits#double2JDouble" data-isabs="false">
+      <a id="double2JDouble(Double):JDouble"></a>
+      <h4 class="signature">
+      <span class="kind">implicit def</span>
+      <span class="symbol"> 
+        <span class="name">double2JDouble</span>
+        
+        <span class="params">(<span name="arg">arg: <span name="scala.Double" class="extype">Double</span></span>)</span><span class="result">: <span name="net.liftweb.json.JsonAST.JDouble" class="extype">JDouble</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>implicit </dd><dt>Definition Classes</dt><dd><a name="org.onion_lang.jsonda.Implicits" class="extype" href="Implicits.html">Implicits</a></dd></dl></div>
+    </li><li visbl="pub" name="org.onion_lang.jsonda.example" data-isabs="false">
+      <a id="example:example"></a>
+      <h4 class="signature">
+      <span class="kind">package</span>
+      <span class="symbol"> 
+        <a href="example/package.html"><span class="name">example</span></a>
+        
+        
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="org.onion_lang.jsonda.Implicits#int2JInt" data-isabs="false">
+      <a id="int2JInt(Int):JInt"></a>
+      <h4 class="signature">
+      <span class="kind">implicit def</span>
+      <span class="symbol"> 
+        <span class="name">int2JInt</span>
+        
+        <span class="params">(<span name="arg">arg: <span name="scala.Int" class="extype">Int</span></span>)</span><span class="result">: <span name="net.liftweb.json.JsonAST.JInt" class="extype">JInt</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>implicit </dd><dt>Definition Classes</dt><dd><a name="org.onion_lang.jsonda.Implicits" class="extype" href="Implicits.html">Implicits</a></dd></dl></div>
+    </li><li visbl="pub" name="org.onion_lang.jsonda.Implicits#makeBinderFromString" data-isabs="false">
+      <a id="makeBinderFromString(String):PBinder"></a>
+      <h4 class="signature">
+      <span class="kind">implicit def</span>
+      <span class="symbol"> 
+        <span class="name">makeBinderFromString</span>
+        
+        <span class="params">(<span name="arg">arg: String</span>)</span><span class="result">: <a name="org.onion_lang.jsonda.Implicits.PBinder" class="extype" href="Implicits$PBinder.html">PBinder</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>implicit </dd><dt>Definition Classes</dt><dd><a name="org.onion_lang.jsonda.Implicits" class="extype" href="Implicits.html">Implicits</a></dd></dl></div>
+    </li><li visbl="pub" name="org.onion_lang.jsonda.Implicits#makeBinderFromSymbol" data-isabs="false">
+      <a id="makeBinderFromSymbol(Symbol):PBinder"></a>
+      <h4 class="signature">
+      <span class="kind">implicit def</span>
+      <span class="symbol"> 
+        <span class="name">makeBinderFromSymbol</span>
+        
+        <span class="params">(<span name="arg">arg: <span name="scala.Symbol" class="extype">Symbol</span></span>)</span><span class="result">: <a name="org.onion_lang.jsonda.Implicits.PBinder" class="extype" href="Implicits$PBinder.html">PBinder</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>implicit </dd><dt>Definition Classes</dt><dd><a name="org.onion_lang.jsonda.Implicits" class="extype" href="Implicits.html">Implicits</a></dd></dl></div>
+    </li><li visbl="pub" name="org.onion_lang.jsonda.parser" data-isabs="false">
+      <a id="parser:parser"></a>
+      <h4 class="signature">
+      <span class="kind">package</span>
+      <span class="symbol"> 
+        <a href="parser/package.html"><span class="name">parser</span></a>
+        
+        
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="org.onion_lang.jsonda.Implicits#pimpJsonAST" data-isabs="false">
+      <a id="pimpJsonAST(JValue):PJSON"></a>
+      <h4 class="signature">
+      <span class="kind">implicit def</span>
+      <span class="symbol"> 
+        <span class="name">pimpJsonAST</span>
+        
+        <span class="params">(<span name="arg">arg: <span name="net.liftweb.json.JsonAST.JValue" class="extype">JValue</span></span>)</span><span class="result">: <a name="org.onion_lang.jsonda.Implicits.PJSON" class="extype" href="Implicits$PJSON.html">PJSON</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>implicit </dd><dt>Definition Classes</dt><dd><a name="org.onion_lang.jsonda.Implicits" class="extype" href="Implicits.html">Implicits</a></dd></dl></div>
+    </li><li visbl="pub" name="org.onion_lang.jsonda.Implicits#string2JString" data-isabs="false">
+      <a id="string2JString(String):JString"></a>
+      <h4 class="signature">
+      <span class="kind">implicit def</span>
+      <span class="symbol"> 
+        <span class="name">string2JString</span>
+        
+        <span class="params">(<span name="arg">arg: String</span>)</span><span class="result">: <span name="net.liftweb.json.JsonAST.JString" class="extype">JString</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>implicit </dd><dt>Definition Classes</dt><dd><a name="org.onion_lang.jsonda.Implicits" class="extype" href="Implicits.html">Implicits</a></dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+
+      </div>
+      
+      <div id="tooltip"></div>
+      
+    </body>
+      </html>
