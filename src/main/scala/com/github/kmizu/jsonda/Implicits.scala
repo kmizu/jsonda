@@ -108,7 +108,7 @@ class Implicits {
   }
 
   /**
-   * Constructs an object of [net.liftweb.json.JsonAST.JArray].
+   * Constructs an object of [[net.liftweb.json.JsonAST.JArray]].
    * The elements of the array are `elements`.
    * @param elements var-args of [[net.liftweb.json.JsonAST.JValue]], which are elements of [[net.liftweb.json.JsonAST.JArray]]
    * @return [[net.liftweb.json.JsonAST.JArray]], which elements is `elements`.
