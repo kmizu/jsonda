@@ -64,9 +64,13 @@ trait JsondaDSLs {
 
   implicit def int2JInt(arg: Int): JsonInt
 
+  implicit def long2JInt(arg: Long): JsonInt
+
   implicit def string2JString(arg: String): JsonString
 
   implicit def boolean2JBool(arg: Boolean): JsonBool
+
+  implicit def float2JDouble(arg: Float): JsonDouble
 
   implicit def double2JDouble(arg: Double): JsonDouble
 

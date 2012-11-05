@@ -45,9 +45,13 @@ class JsondaLiftJsonDSLs extends JsondaDSLs {
 
   implicit def int2JInt(arg: Int): JsonInt = JInt(arg)
 
+  implicit def long2JInt(arg: Long): JsonInt = JInt(arg)
+
   implicit def string2JString(arg: String): JsonString = JString(arg)
 
   implicit def boolean2JBool(arg: Boolean): JsonBool = JBool(arg)
+
+  implicit def float2JDouble(arg: Float): JsonDouble = JDouble(arg)
 
   implicit def double2JDouble(arg: Double): JsonDouble = JDouble(arg)
 
