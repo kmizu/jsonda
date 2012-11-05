@@ -8,7 +8,6 @@ import util.DynamicVariable
  * Time: 0:48
  */
 trait JsondaDSLs {
-  type ElementType
   type JsonValueType
   type JsonInt
   type JsonString
@@ -17,7 +16,7 @@ trait JsondaDSLs {
   type JsonObject
   type JsonArray
 
-  private[this] val values = new DynamicVariable[List[ElementType]](null)
+  protected val values = new DynamicVariable[List[(String, JsonValueType)]](null)
 
   /**
    * A class for extending String methods in  *Pimp my library* pattern".
@@ -37,8 +36,8 @@ trait JsondaDSLs {
      * outside of % method call.
      * @param value value corresponds key, which is actually `underlying`.
      */
-    def :-(value: ElementType) {
-      values.value = value :: values.value
+    def :-(value: JsonValueType) {
+      values.value = (underlying, value) :: values.value
     }
   }
 
@@ -77,8 +76,6 @@ trait JsondaDSLs {
 
   implicit def pimpJsonAST(arg: JsonValueType): PJSON
 
-  def makePJSON(arg: JsonValueType): PJSON
-
   def constructJsonObject(): JsonObject
 
   /**
@@ -99,5 +96,5 @@ trait JsondaDSLs {
    *        [[com.github.kmizu.jsonda.JsondaDSLs.JsonArray]]
    * @return [[com.github.kmizu.jsonda.JsondaDSLs.JsonArray]], which elements is `elements`.
    */
-  def $(elements: JsonValueType): JsonArray
+  def $(elements: JsonValueType*): JsonArray
 }
