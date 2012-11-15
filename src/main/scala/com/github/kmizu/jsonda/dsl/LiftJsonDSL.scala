@@ -13,7 +13,7 @@ import util.DynamicVariable
  * Date: 2012/11/05
  * Time: 22:26
  */
-class JsondaLiftJsonDSLs extends JsondaDSLs {
+class LiftJsonDSL extends JsondaDSLs {
   type JsonValueType = JValue
   type JsonInt = JInt
   type JsonString = JString
@@ -66,4 +66,4 @@ class JsondaLiftJsonDSLs extends JsondaDSLs {
   def $(elements: JsonValueType*): JsonArray = JArray(elements.toList)
 }
 
-object JsondaLiftJsonDSLs extends JsondaLiftJsonDSLs
+object LiftJsonDSL extends LiftJsonDSL
