@@ -1,19 +1,18 @@
 package com.github.kmizu.jsonda.dsl
 
-import com.github.kmizu.jsonda.{PimpedType, JsondaDSLs}
+import com.github.kmizu.jsonda.JsondaDSL
 
 import net.liftweb.json.JsonAST._
 import net.liftweb.json.pretty
 import net.liftweb.json.compact
 import net.liftweb.json.render
-import util.DynamicVariable
 
 /**
  * @author Kota Mizushima
  * Date: 2012/11/05
  * Time: 22:26
  */
-class LiftJsonDSL extends JsondaDSLs {
+class LiftJsonDSL extends JsondaDSL {
   type JsonValueType = JValue
   type JsonInt = JInt
   type JsonString = JString
@@ -28,7 +27,7 @@ class LiftJsonDSL extends JsondaDSLs {
    * @param underlying a value of the type to extend.
    * @since 0.0.2
    */
-  class PJSON(override val underlying: JsonValueType) extends super[JsondaDSLs].PJSON(underlying) {
+  class PJSON(override val underlying: JsonValueType) extends super[JsondaDSL].PJSON(underlying) {
 
     /**
      * Dump JsonRootType object as JSON String

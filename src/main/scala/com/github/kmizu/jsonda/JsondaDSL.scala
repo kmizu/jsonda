@@ -7,7 +7,7 @@ import util.DynamicVariable
  * Date: 2012/10/31
  * Time: 0:48
  */
-trait JsondaDSLs {
+trait JsondaDSL {
   type JsonValueType
   type JsonInt
   type JsonString
@@ -83,7 +83,7 @@ trait JsondaDSLs {
   def constructJsonObject(): JsonObject
 
   /**
-   * Constructs an object which type is [[com.github.kmizu.jsonda.JsondaDSLs.JsonObject]].
+   * Constructs an object which type is [[com.github.kmizu.jsonda.JsondaDSL.JsonObject]].
    * The object is determined by the result of evaluation of body.
    */
   def %(body: => Any): JsonObject = {
@@ -94,11 +94,11 @@ trait JsondaDSLs {
   }
 
   /**
-   * Constructs an object of [[com.github.kmizu.jsonda.JsondaDSLs.JsonArray]].
+   * Constructs an object of [[com.github.kmizu.jsonda.JsondaDSL.JsonArray]].
    * The elements of the array are `elements`.
-   * @param elements var-args of [[com.github.kmizu.jsonda.JsondaDSLs.JsonValueType]], which are elements of
-   *        [[com.github.kmizu.jsonda.JsondaDSLs.JsonArray]]
-   * @return [[com.github.kmizu.jsonda.JsondaDSLs.JsonArray]], which elements is `elements`.
+   * @param elements var-args of [[com.github.kmizu.jsonda.JsondaDSL.JsonValueType]], which are elements of
+   *        [[com.github.kmizu.jsonda.JsondaDSL.JsonArray]]
+   * @return [[com.github.kmizu.jsonda.JsondaDSL.JsonArray]], which elements is `elements`.
    */
   def $(elements: JsonValueType*): JsonArray
 }

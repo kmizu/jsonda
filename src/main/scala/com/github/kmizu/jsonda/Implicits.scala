@@ -1,8 +1,6 @@
 package com.github.kmizu.jsonda
 
-import dsl.JsondaLiftJsonDSLs
-import scala.util.DynamicVariable
-import net.liftweb.json._
+import dsl.LiftJsonDSL
 
 /**== Overview ==
  * Provides a DSL for constructing JSON object(based on [[net.liftweb.json.JsonAST.JValue]]).
@@ -33,7 +31,7 @@ import net.liftweb.json._
  * }
  * }}}
  */
-class Implicits extends JsondaLiftJsonDSLs
+class Implicits extends LiftJsonDSL
 
 /**
  * It is shorthand of (new Implicits).
