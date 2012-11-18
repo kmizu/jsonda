@@ -16,6 +16,10 @@ libraryDependencies ++= Seq(
 
 scalacOptions ++= Seq("-deprecation","-unchecked")
 
+initialCommands in console += {
+  Iterator("net.liftweb.json._").map("import "+).mkString("\n")
+}
+
 publishMavenStyle := true
 
 publishTo <<= version { (v: String) =>

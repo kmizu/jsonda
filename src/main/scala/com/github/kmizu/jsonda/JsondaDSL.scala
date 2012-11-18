@@ -8,13 +8,13 @@ import util.DynamicVariable
  * Time: 0:48
  */
 trait JsondaDSL {
-  type JsonValueType
-  type JsonInt
-  type JsonString
-  type JsonBool
-  type JsonDouble
-  type JsonObject
-  type JsonArray
+  type JsonValueType <: Any
+  type JsonInt <: JsonValueType
+  type JsonString <: JsonValueType
+  type JsonBool <: JsonValueType
+  type JsonDouble <: JsonValueType
+  type JsonObject <: JsonValueType
+  type JsonArray <: JsonValueType
 
   protected val values = new DynamicVariable[List[(String, JsonValueType)]](null)
 
@@ -61,6 +61,11 @@ trait JsondaDSL {
   implicit def makeBinderFromString(arg: String): PBinder = new PBinder(arg)
 
   implicit def makeBinderFromSymbol(arg: Symbol): PBinder = new PBinder(arg.name)
+
+  implicit def option2JsonValue[A <% JsonValueType](arg: Option[A]): JsonValueType = arg match {
+    case Some(value) => value
+    case None => null.asInstanceOf[JsonValueType]
+  }
 
   implicit def int2JInt(arg: Int): JsonInt
 

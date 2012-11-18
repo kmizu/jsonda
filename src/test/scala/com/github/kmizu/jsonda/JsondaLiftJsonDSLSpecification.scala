@@ -45,6 +45,21 @@ class JsondaLiftJsonDSLSpecification extends Specification {
 
   }
 
+  """%{ 'some_key :- Option(100); 'none_key :- None }""" should {
+    val data = %{
+      'some_key :- Option(100)
+      'none_key :- None
+    }
+
+    """have some_key 100""" in {
+      (data \\ "some_key").values must ===(100)
+    }
+
+    """have none_key null""" in {
+      (data \\ "none_key") must ===(null)
+    }
+  }
+
   """%{'long_key :- 100L}""" should {
     val data = %{
       'long_key :- 100L
