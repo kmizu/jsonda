@@ -13,15 +13,106 @@ import net.liftweb.json.JsonAST.JNull
  *
  */
 class JsondaLiftJsonDSLSpecification extends Specification {
-  """%{'name :- "Kota Mizushima", 'age :- 18}}}""" should {
-    val person = % {
-      'name :- "Kota Mizushima"; 'age :- 28
+  """%{ 'some_key :- Option(100); 'none_key :- None }""" should {
+    val data = %{
+      'some_key :- Option(100)
+      'none_key :- None
     }
-    """have name "Kota Mizushima""" in {
+
+    """have 100 for 'some_key""" in {
+      (data \\ "some_key").values must ===(100)
+    }
+
+    """have null for 'none_key""" in {
+      (data \\ "none_key").values must ===(null)
+    }
+  }
+
+  """%{'int_key :- 100}""" should {
+    val data = %{
+      'long_key :- 100
+    }
+    """have 100 for 'long_key""" in {
+      (data \\ "long_key").values must_==(100)
+    }
+  }
+
+  """%{'long_key :- 100L}""" should {
+    val data = %{
+      'long_key :- 100L
+    }
+    """have 100 for 'int_key""" in {
+      (data \\ "long_key").values must_==(100)
+    }
+  }
+
+  """%{'float_key :- 1.5F}""" should {
+    val data = %{
+      'float_key :- 1.5f
+    }
+    """have 1.5 for 'float_key""" in {
+      (data \\ "float_key").values must_==(1.5F)
+    }
+  }
+
+  """%{'double_key :- 1.5}""" should {
+    val data = %{
+      'double_key :- 1.5
+    }
+    """have 1.5 for 'double_key""" in {
+      (data \\ "double_key").values must_==(1.5)
+    }
+  }
+
+  """%{'boolean_true_key :- true; boolean_false_key :- false }""" should {
+    val data = %{
+      'boolean_true_key :- true
+      'boolean_false_key :- false
+    }
+    """have true for 'boolean_true_key""" in {
+      (data \\ "boolean_true_key").values must ===(true)
+    }
+    """have false for 'boolean_false_key""" in {
+      (data \\ "boolean_false_key").values must ===(false)
+    }
+  }
+
+  """%{'string_key :- "Hello"}""" should {
+    val data = %{
+      'string_key :- "Hello"
+    }
+    """have "Hello" for 'string_key""" in {
+      (data \\ "string_key").values must ===("Hello")
+    }
+  }
+
+  """%{'null_key :- JsonNull }""" should {
+    val data = %{
+      'null_key :- JsonNull
+    }
+    """have null for 'null_key""" in {
+      (data \\ "null_key").values must ===(null)
+    }
+  }
+
+  """%{'array_key :- $(1, 2, 3) }""" should {
+    val data = %{
+      'array_key :- $(1, 2, 3)
+    }
+    """have List(1, 2, 3) for 'array_key""" in {
+      (data \\ "array_key").values must ===(List(1, 2, 3))
+    }
+  }
+
+  """%{'name :- "Kota Mizushima", 'age :- 29}}}""" should {
+    val person = % {
+      'name :- "Kota Mizushima"; 'age :- 29
+    }
+    """have "Kota Mizushima for 'name""" in {
       (person \\ "name").values must ===("Kota Mizushima")
     }
-    """have age 28""" in {
-      (person \\ "age").values must ===(28)
+    """have 28 for 'age""" in {
+      (person \\ "age").values must ===(29)
     }
   }
 
@@ -31,10 +122,10 @@ class JsondaLiftJsonDSLSpecification extends Specification {
         'x :- 1; 'y :- 2
       }
     }
-    """have str "a String"""" in {
+    """have "a String" for 'str""" in {
       (data \\ "str").values must ===("a String")
     }
-    """have arr [1, 2, 3, 4, 5]""" in {
+    """have [1, 2, 3, 4, 5] for 'arr""" in {
       (data \\ "arr").asInstanceOf[JsonAST.JArray] must ===(JsonAST.JArray(List(1, 2, 3, 4, 5)))
     }
     """have obj which x == 1 and y == 2""" in {
@@ -42,40 +133,6 @@ class JsondaLiftJsonDSLSpecification extends Specification {
       (obj \ "x").values must ===(1)
       (obj \ "y").values must ===(2)
 
-    }
-
-  }
-
-  """%{ 'some_key :- Option(100); 'none_key :- None }""" should {
-    val data = %{
-      'some_key :- Option(100)
-      'none_key :- None
-    }
-
-    """have some_key 100""" in {
-      (data \\ "some_key").values must ===(100)
-    }
-
-    """have none_key JNull""" in {
-      (data \\ "none_key") must ===(JNull)
-    }
-  }
-
-  """%{'long_key :- 100L}""" should {
-    val data = %{
-      'long_key :- 100L
-    }
-    """have long_key 100""" in {
-      (data \\ "long_key").values must_==(100)
-    }
-  }
-
-  """%{'float_key :- 1.5F}""" should {
-    val data = %{
-      'float_key :- 1.5f
-    }
-    """have float_key 1.5""" in {
-      (data \\ "float_key").values must_==(1.5F)
     }
   }
 }
