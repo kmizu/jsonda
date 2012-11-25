@@ -1,9 +1,10 @@
 package com.github.kmizu.jsonda
 
 import dsl.StdJsonDSL
-import StdJsonDSL._
+import dsl.StdJsonDSL._
 import org.specs2.mutable.Specification
-import scala.util.parsing.json._
+import util.parsing.json.JSONObject
+import util.parsing.json.JSONArray
 
 /**
  * @author Mizushima
@@ -42,8 +43,23 @@ class JsondaStdJsonDSLSpecification extends Specification {
 
   }
 
+  """%{ 'some_key :- Option(100); 'none_key :- None }""" should {
+    val data = %{
+      'some_key :- Option(100)
+      'none_key :- None
+    }
+
+    """have some_key Option(100)""" in {
+      data.obj("some_key") must ===(Option(100))
+    }
+
+    """have none_key None""" in {
+      data.obj("none_key") must ===(None)
+    }
+  }
+
   """%{'long_key :- 100L}""" should {
-    val data: StdJsonDSL.JsonObject = %{
+    val data = %{
       'long_key :- 100L
     }
     """have long_key 100""" in {
@@ -52,7 +68,7 @@ class JsondaStdJsonDSLSpecification extends Specification {
   }
 
   """%{'float_key :- 1.5F}""" should {
-    val data: StdJsonDSL.JsonObject = %{
+    val data = %{
       'float_key :- 1.5f
     }
     """have float_key 1.5""" in {

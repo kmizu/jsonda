@@ -1,6 +1,7 @@
 package com.github.kmizu.jsonda
 
 import util.DynamicVariable
+import net.liftweb.json.JsonAST.JNull
 
 /**
  * @author Kota Mizushima
@@ -64,8 +65,10 @@ trait JsondaDSL {
 
   implicit def option2JsonValue[A <% JsonValueType](arg: Option[A]): JsonValueType = arg match {
     case Some(value) => value
-    case None => null.asInstanceOf[JsonValueType]
+    case None => JsonNull
   }
+
+  implicit def null2JsonNull(mnull: Null): JsonValueType
 
   implicit def int2JInt(arg: Int): JsonInt
 
@@ -84,6 +87,8 @@ trait JsondaDSL {
   implicit def bigDecimal2String(arg: BigDecimal): JsonString
 
   implicit def pimpJsonAST(arg: JsonValueType): PJSON
+
+  val JsonNull: JsonValueType
 
   def constructJsonObject(): JsonObject
 

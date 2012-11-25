@@ -6,6 +6,7 @@ package com.github.kmizu.jsonda
 import com.github.kmizu.jsonda.Implicits._
 import org.specs2.mutable.Specification
 import net.liftweb.json.JsonAST
+import net.liftweb.json.JsonAST.JNull
 
 /**
  * @author Mizushima
@@ -55,8 +56,8 @@ class JsondaLiftJsonDSLSpecification extends Specification {
       (data \\ "some_key").values must ===(100)
     }
 
-    """have none_key null""" in {
-      (data \\ "none_key") must ===(null)
+    """have none_key JNull""" in {
+      (data \\ "none_key") must ===(JNull)
     }
   }
 

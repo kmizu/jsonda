@@ -42,6 +42,8 @@ class LiftJsonDSL extends JsondaDSL {
     }
   }
 
+  implicit def null2JsonNull(mnull: Null): JsonValueType = JNull
+
   implicit def int2JInt(arg: Int): JsonInt = JInt(arg)
 
   implicit def long2JInt(arg: Long): JsonInt = JInt(arg)
@@ -61,6 +63,8 @@ class LiftJsonDSL extends JsondaDSL {
   implicit def pimpJsonAST(arg: JValue): PJSON = new PJSON(arg)
 
   def constructJsonObject() = JObject(values.value.map{case (k, v) => JField(k, v)})
+
+  val JsonNull: JsonValueType = JNull
 
   def $(elements: JsonValueType*): JsonArray = JArray(elements.toList)
 }

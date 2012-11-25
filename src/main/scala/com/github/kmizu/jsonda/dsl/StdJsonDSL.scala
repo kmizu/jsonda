@@ -37,6 +37,8 @@ class StdJsonDSL extends JsondaDSL {
     }
   }
 
+  implicit def null2JsonNull(mnull: Null): JsonValueType = null
+
   implicit def int2JInt(arg: Int): JsonInt = arg
 
   implicit def long2JInt(arg: Long): JsonInt = arg
@@ -56,6 +58,8 @@ class StdJsonDSL extends JsondaDSL {
   implicit def pimpJsonAST(arg: JsonValueType): PJSON = new PJSON(arg)
 
   def constructJsonObject() = JSONObject(values.value.map{case (k, v) => (k, v)}.toMap)
+
+  val JsonNull: JsonValueType = null
 
   def $(elements: JsonValueType*): JsonArray = JSONArray(elements.toList)
 }
