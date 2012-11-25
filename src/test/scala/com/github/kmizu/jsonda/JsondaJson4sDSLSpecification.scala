@@ -1,17 +1,14 @@
-/**
- *
- */
 package com.github.kmizu.jsonda
 
-import com.github.kmizu.jsonda.Implicits._
+import com.github.kmizu.jsonda.dsl.Json4sDSL._
 import org.specs2.mutable.Specification
-import net.liftweb.json.JsonAST
+import org.json4s._
 
 /**
  * @author Mizushima
  *
  */
-class JsondaLiftJsonDSLSpecification extends Specification {
+class JsondaJson4sDSLSpecification extends Specification {
   """%{ 'some_key :- Option(100); 'none_key :- None }""" should {
     val data = %{
       'some_key :- Option(100)
@@ -135,3 +132,4 @@ class JsondaLiftJsonDSLSpecification extends Specification {
     }
   }
 }
+
