@@ -1,5 +1,5 @@
 package com.github.kmizu
 
-package object jsonda extends Implicits {
+package object jsonda {
 
 }
