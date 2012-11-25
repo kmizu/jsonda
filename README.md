@@ -9,11 +9,11 @@ Jsonic to Jsonda.
 # Using with sbt
 
 If you woule like to use Jsonda with sbt, what you need to do is only
-adding the following lines to your build.sbt.  There exists jsonda 0.2.1
+adding the following lines to your build.sbt.  There exists jsonda 0.4.0
 for both Scala 2.9.1 and Scala 2.9.2.
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda"  % "0.2.1"
+libraryDependencies += "com.github.kmizu" %% "jsonda"  % "0.4.0"
 ```
 
 # For Developer
@@ -107,8 +107,11 @@ Both have same meanings.
   * null:
 
 ```scala```
-      null
+      JsonNull
 ```
+
+  * Option[A]:
+    If value of Option[A] is Some(a), a is implicitly converted.  None is regarded as null in JSON.
 
 # Quick Start
 
@@ -123,7 +126,9 @@ val person = %{
 }
 ```
     
-The type of person is net.liftweb.json.JsonAST.JValue.  If you are familiar with lift-json, you can easily manipulate JSON objects.
+The type of person is [[net.liftweb.json.JsonAST.JValue]] if you import [[com.github.kmizu.jsonda.Implicits]].
+If you are familiar with lift-json, you can easily manipulate JSON objects.  Jsonda 4.0.0 also supports
+json4s-native and [[scala.util.parsing.json]].
 
 Nested JSON can be written easily as the followings:
 
@@ -148,6 +153,7 @@ val config = % {
 
 Scaladoc is available via the following links:
 
+* [Scaladoc(0.4.0)](http://kmizu.github.com/jsonda/api/0.4.0)
 * [Scaladoc(0.2.1)](http://kmizu.github.com/jsonda/api/0.2.1)
 * [Scaladoc(0.2)](http://kmizu.github.com/jsonda/api/0.2)
 * [Scaladoc(0.1)](http://kmizu.github.com/jsonda/api/0.1)
