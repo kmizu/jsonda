@@ -6,11 +6,14 @@ package com.github.kmizu.jsonda
 import com.github.kmizu.jsonda.Implicits._
 import org.specs2.mutable.Specification
 import net.liftweb.json.JsonAST
+import org.junit.runner._
+import org.specs2.runner._
 
 /**
  * @author Mizushima
  *
  */
+@RunWith(classOf[JUnitRunner])
 class JsondaLiftJsonDSLSpecification extends Specification {
   """%{ 'some_key :- Option(100); 'none_key :- None }""" should {
     val data = %{

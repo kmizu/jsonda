@@ -3,11 +3,14 @@ package com.github.kmizu.jsonda
 import com.github.kmizu.jsonda.dsl.Json4sDSL._
 import org.specs2.mutable.Specification
 import org.json4s._
+import org.junit.runner._
+import org.specs2.runner._
 
 /**
  * @author Mizushima
  *
  */
+@RunWith(classOf[JUnitRunner])
 class JsondaJson4sDSLSpecification extends Specification {
   """%{ 'some_key :- Option(100); 'none_key :- None }""" should {
     val data = %{

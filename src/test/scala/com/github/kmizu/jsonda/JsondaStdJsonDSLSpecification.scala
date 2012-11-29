@@ -5,11 +5,14 @@ import dsl.StdJsonDSL._
 import org.specs2.mutable.Specification
 import util.parsing.json.JSONObject
 import util.parsing.json.JSONArray
+import org.junit.runner._
+import org.specs2.runner._
 
 /**
  * @author Mizushima
  *
  */
+@RunWith(classOf[JUnitRunner])
 class JsondaStdJsonDSLSpecification extends Specification {
 
   """%{ 'some_key :- Option(100); 'none_key :- None }""" should {

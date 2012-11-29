@@ -14,13 +14,18 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.specs2" %% "specs2" % "1.11" % "test"
+  "org.specs2" %% "specs2" % "1.11" % "test",
+  "junit" % "junit" % "4.7" % "test"
 )
 
 scalacOptions ++= Seq("-deprecation","-unchecked")
 
+testOptions += Tests.Argument(TestFrameworks.Specs2, "console", "junitxml")
+
+seq(ScctPlugin.instrumentSettings:_*)
+
 initialCommands in console += {
-  Iterator("net.liftweb.json._").map("import "+).mkString("\n")
+  Iterator("net.liftweb.json._", "com.github.kmizu.jsonda.Implicits._").map("import "+).mkString("\n")
 }
 
 publishMavenStyle := true
