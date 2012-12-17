@@ -1,4 +1,4 @@
-Copyright (c) 2005, Kota Mizushima
+Copyright (c) 2012, Kota Mizushima
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
