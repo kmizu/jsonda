@@ -10,7 +10,14 @@ crossScalaVersions := Seq("2.9.1", "2.9.2")
 
 libraryDependencies ++= Seq(
   "net.liftweb" % "lift-json_2.9.1" % "2.4",
-  "org.json4s" %% "json4s-native" % "3.0.0"
+  "org.json4s" %% "json4s-native" % "3.0.0",
+  "com.reportgrid" %% "blueeyes-json" % "1.0.0-M8"
+)
+
+resolvers ++= Seq(
+  Opts.resolver.sonatypeReleases,
+  Opts.resolver.sonatypeSnapshots,
+  "reportgrid" at "http://nexus.reportgrid.com/content/repositories/public-releases"
 )
 
 libraryDependencies ++= Seq(
