@@ -104,7 +104,7 @@ class JsondaStdJsonDSLSpecification extends Specification {
     """have "Kota Mizushima for 'name""" in {
       person.obj("name") must ===("Kota Mizushima")
     }
-    """have 28 for 'age""" in {
+    """have 29 for 'age""" in {
       person.obj("age") must ===(29)
     }
   }

@@ -110,7 +110,7 @@ class JsondaJson4sDSLSpecification extends Specification {
     """have "Kota Mizushima for 'name""" in {
       (person \\ "name").values must ===("Kota Mizushima")
     }
-    """have 28 for 'age""" in {
+    """have 29 for 'age""" in {
       (person \\ "age").values must ===(29)
     }
   }
