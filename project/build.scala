@@ -54,7 +54,7 @@ object build extends Build{
     file(".")
   ).settings(
     baseSettings ++ Seq(
-      publishArtifact := false
+      publishArtifact := false, publish := {}, publishLocal := {}
     ) : _*
   ).aggregate(
     core,json4s,lift,blueeyes,std
