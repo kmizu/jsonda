@@ -12,7 +12,7 @@ object build extends Build{
     ),
     libraryDependencies ++= Seq(
       "org.specs2" %% "specs2" % "1.12.3" % "test",
-      "junit" % "junit" % "4.7" % "test"
+      "junit" % "junit" % "4.11" % "test"
     ),
     scalacOptions ++= Seq("-deprecation","-unchecked"),
     testOptions += Tests.Argument(TestFrameworks.Specs2, "console", "junitxml"),
@@ -73,7 +73,7 @@ object build extends Build{
   ).settings(
     baseSettings ++ Seq(
       libraryDependencies ++= Seq(
-        "org.json4s" %% "json4s-native" % "3.0.0"
+        "org.json4s" %% "json4s-native" % "3.1.0"
       )
     ) : _*
   ).dependsOn(core)
