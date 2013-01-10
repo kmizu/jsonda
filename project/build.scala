@@ -7,12 +7,12 @@ object build extends Build{
     version := "0.5.0-SNAPSHOT",
     scalaVersion := "2.9.2",
     crossScalaVersions := Seq("2.9.1", "2.9.2"),
-    resolvers ++= Seq(
-      Opts.resolver.sonatypeReleases
-    ),
     libraryDependencies ++= Seq(
       "org.specs2" %% "specs2" % "1.12.3" % "test",
       "junit" % "junit" % "4.11" % "test"
+    ),
+    resolvers ++= Seq(
+      Opts.resolver.sonatypeReleases
     ),
     scalacOptions ++= Seq("-deprecation","-unchecked"),
     testOptions += Tests.Argument(TestFrameworks.Specs2, "console", "junitxml"),
@@ -57,7 +57,7 @@ object build extends Build{
       publishArtifact := false, publish := {}, publishLocal := {}
     ) : _*
   ).aggregate(
-    core,json4s,lift,blueeyes,std
+    core,json4s,lift,std
   )
 
   lazy val core = Project(
@@ -97,21 +97,6 @@ object build extends Build{
     file("std")
   ).settings(
     baseSettings: _*
-  ).dependsOn(core)
-
-  lazy val blueeyes = Project(
-    "jsonda-blueeyes",
-    file("blueeyes")
-  ).settings(
-    baseSettings ++ Seq(
-      libraryDependencies ++= Seq(
-        "com.reportgrid" %% "blueeyes-json" % "1.0.0-M8"
-      ),
-      resolvers ++= Seq(
-        Opts.resolver.sonatypeSnapshots,
-        "reportgrid" at "http://nexus.reportgrid.com/content/repositories/public-releases"
-      )
-    ) : _*
   ).dependsOn(core)
 
 }
