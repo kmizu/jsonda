@@ -4,7 +4,7 @@ object build extends Build{
 
   val baseSettings = ScctPlugin.instrumentSettings ++ Seq(
     organization := "com.github.kmizu",
-    version := "0.5.0-SNAPSHOT",
+    version := "0.6.0",
     scalaVersion := "2.9.2",
     crossScalaVersions := Seq("2.9.1", "2.9.2"),
     libraryDependencies ++= Seq(
