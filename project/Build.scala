@@ -8,6 +8,8 @@ object build extends Build{
     else
       "org.specs2" %% "specs2" % "1.12.3" % "test"
 
+  val scaladocBranch = TaskKey[String]("scaladoc-branch")
+
   val baseSettings = ScctPlugin.instrumentSettings ++ Seq(
     organization := "com.github.kmizu",
     version := "0.7.0-SNAPSHOT",
@@ -21,6 +23,10 @@ object build extends Build{
       Opts.resolver.sonatypeReleases
     ),
     scalacOptions ++= Seq("-deprecation","-unchecked"),
+    scaladocBranch := "master",
+    scalacOptions in (Compile, doc) <++= (baseDirectory, scaladocBranch).map{ (bd, branch) =>
+      Seq("-sourcepath", bd.getAbsolutePath, "-doc-source-url", "https://github.com/kmizu/jsonda/tree/" + branch + "€{FILE_PATH}.scala")
+    },
     testOptions += Tests.Argument(TestFrameworks.Specs2, "console", "junitxml"),
     publishMavenStyle := true,
     publishTo <<= version { (v: String) =>
@@ -59,7 +65,7 @@ object build extends Build{
     "jsonda",
     file(".")
   ).settings(
-    baseSettings ++ Seq(
+    baseSettings ++ Unidoc.settings ++ Seq(
       publishArtifact := false, publish := {}, publishLocal := {}
     ) : _*
   ).aggregate(
