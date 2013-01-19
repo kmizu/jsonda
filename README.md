@@ -9,11 +9,23 @@ Jsonic to Jsonda.
 # Using with sbt
 
 If you woule like to use Jsonda with sbt, what you need to do is only
-adding the following lines to your build.sbt.  There exists jsonda 0.4.0
-for both Scala 2.9.1 and Scala 2.9.2.
+adding the following lines to your build.sbt.  There exists jsonda 0.6.0
+for Scala 2.9.1 and Scala 2.9.2 and Scala 2.10.0.
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda"  % "0.4.0"
+libraryDependencies += "com.github.kmizu" %% "jsonda-json4s"  % "0.6.0"
+```
+
+or
+
+```scala
+libraryDependencies += "com.github.kmizu" %% "jsonda-lift"  % "0.6.0"
+```
+
+or
+
+```scala
+libraryDependencies += "com.github.kmizu" %% "jsonda-std"  % "0.6.0"
 ```
 
 # For Developer
