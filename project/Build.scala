@@ -2,15 +2,21 @@ import sbt._,Keys._
 
 object build extends Build{
 
+  def specs2(version: String) =
+    if(version.startsWith("2.10"))
+      "org.specs2" %% "specs2" % "1.13" % "test"
+    else
+      "org.specs2" %% "specs2" % "1.12.3" % "test"
+
   val baseSettings = ScctPlugin.instrumentSettings ++ Seq(
     organization := "com.github.kmizu",
-    version := "0.6.0",
-    scalaVersion := "2.9.2",
-    crossScalaVersions := Seq("2.9.1", "2.9.2"),
+    version := "0.7.0-SNAPSHOT",
+    scalaVersion := "2.10.0",
+    crossScalaVersions := Seq("2.10.0", "2.9.1", "2.9.2"),
     libraryDependencies ++= Seq(
-      "org.specs2" %% "specs2" % "1.12.3" % "test",
       "junit" % "junit" % "4.11" % "test"
     ),
+    libraryDependencies <+= scalaVersion(specs2),
     resolvers ++= Seq(
       Opts.resolver.sonatypeReleases
     ),
@@ -84,7 +90,7 @@ object build extends Build{
   ).settings(
     baseSettings ++ Seq(
       libraryDependencies ++= Seq(
-        "net.liftweb" % "lift-json_2.9.1" % "2.4"
+        "net.liftweb" %% "lift-json" % "2.5-M4"
       ),
       initialCommands in console += {
         Iterator("net.liftweb.json._", "com.github.kmizu.jsonda.Implicits._").map("import "+).mkString("\n")
