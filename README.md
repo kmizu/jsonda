@@ -165,6 +165,7 @@ val config = % {
 
 Scaladoc is available via the following links:
 
+* [Scaladoc(0.6.0)](http://kmizu.github.com/jsonda/api/0.6.0)
 * [Scaladoc(0.4.0)](http://kmizu.github.com/jsonda/api/0.4.0)
 * [Scaladoc(0.2.1)](http://kmizu.github.com/jsonda/api/0.2.1)
 * [Scaladoc(0.2)](http://kmizu.github.com/jsonda/api/0.2)
