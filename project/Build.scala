@@ -12,7 +12,7 @@ object build extends Build{
 
   val baseSettings = ScctPlugin.instrumentSettings ++ Seq(
     organization := "com.github.kmizu",
-    version := "0.7.0-SNAPSHOT",
+    version := "0.8.0",
     scalaVersion := "2.10.0",
     crossScalaVersions := Seq("2.10.0", "2.9.1", "2.9.2"),
     libraryDependencies ++= Seq(
