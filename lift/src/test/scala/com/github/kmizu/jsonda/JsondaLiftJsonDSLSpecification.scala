@@ -137,4 +137,14 @@ class JsondaLiftJsonDSLSpecification extends Specification {
 
     }
   }
+
+  """%{'foo :- Seq(1, 2, 3); 'bar :- "Seq("a", "b") }""" should {
+    val data = %{
+      'foo :- Seq(1, 2, 3)
+      'bar :- Seq("a", "b")
+    }
+    (data \ "foo").values must_== List(1, 2, 3)
+    (data \ "bar").values must_== List("a", "b")
+  }
+
 }

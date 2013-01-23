@@ -62,6 +62,8 @@ class LiftJsonDSL extends JsondaDSL {
 
   implicit def pimpJsonAST(arg: JValue): PJSON = new PJSON(arg)
 
+  implicit def toJsonArray[A <% JsonValueType](arg: Traversable[A]): JsonArray = JArray(arg.map{e => e: JsonValueType}.toList)
+
   def constructJsonObject() = JObject(values.value.map{case (k, v) => JField(k, v)})
 
   val JsonNull: JsonValueType = JNull

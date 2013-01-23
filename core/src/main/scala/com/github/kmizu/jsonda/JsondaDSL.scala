@@ -87,6 +87,8 @@ trait JsondaDSL {
 
   implicit def pimpJsonAST(arg: JsonValueType): PJSON
 
+  implicit def toJsonArray[A <% JsonValueType](arg: Traversable[A]): JsonArray
+
   val JsonNull: JsonValueType
 
   def constructJsonObject(): JsonObject
