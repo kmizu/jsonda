@@ -57,6 +57,8 @@ class StdJsonDSL extends JsondaDSL {
 
   implicit def pimpJsonAST(arg: JsonValueType): PJSON = new PJSON(arg)
 
+  implicit def toJsonArray[A <% JsonValueType](arg: Traversable[A]): JsonArray = JSONArray(arg.map{e => e: JsonValueType}.toList)
+
   def constructJsonObject() = JSONObject(values.value.map{case (k, v) => (k, v)}.toMap)
 
   val JsonNull: JsonValueType = null
