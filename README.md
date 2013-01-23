@@ -13,19 +13,19 @@ adding the following lines to your build.sbt.  There exists jsonda 0.6.0
 for Scala 2.9.1 and Scala 2.9.2 and Scala 2.10.0.
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda-json4s"  % "0.6.0"
+libraryDependencies += "com.github.kmizu" %% "jsonda-json4s"  % "0.8.0"
 ```
 
 or
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda-lift"  % "0.6.0"
+libraryDependencies += "com.github.kmizu" %% "jsonda-lift"  % "0.8.0"
 ```
 
 or
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda-std"  % "0.6.0"
+libraryDependencies += "com.github.kmizu" %% "jsonda-std"  % "0.8.0"
 ```
 
 # For Developer
@@ -56,6 +56,12 @@ Both have same meanings.
 
 ```scala```
     $($value1, $value2, ...)
+```
+
+or Traversable[JsonValueType] as the followings (new in jsonda 0.8.0):
+
+```scala```
+    Seq($value1, $value2, ...)
 ```
 
 * primitive: 
@@ -165,6 +171,7 @@ val config = % {
 
 Scaladoc is available via the following links:
 
+* [Scaladoc(0.8.0)](http://kmizu.github.com/jsonda/api/0.8.0)
 * [Scaladoc(0.6.0)](http://kmizu.github.com/jsonda/api/0.6.0)
 * [Scaladoc(0.4.0)](http://kmizu.github.com/jsonda/api/0.4.0)
 * [Scaladoc(0.2.1)](http://kmizu.github.com/jsonda/api/0.2.1)
