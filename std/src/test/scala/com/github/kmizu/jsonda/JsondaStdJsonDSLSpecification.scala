@@ -127,4 +127,14 @@ class JsondaStdJsonDSLSpecification extends Specification {
       obj.obj("y") must ===(2)
     }
   }
+
+  """%{'foo :- Seq(1, 2, 3); 'bar :- "Seq("a", "b") }""" should {
+    val data = %{
+      'foo :- Seq(1, 2, 3)
+      'bar :- Seq("a", "b")
+    }
+    data.obj("foo") must_== List(1, 2, 3)
+    data.obj("bar") must_== List("a", "b")
+  }
+
 }
