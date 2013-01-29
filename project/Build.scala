@@ -101,9 +101,9 @@ object build extends Build{
     file("lift")
   ).settings(
     baseSettings ++ Seq(
-      libraryDependencies ++= Seq(
-        "net.liftweb" %% "lift-json" % "2.5-M4"
-      ),
+      libraryDependencies <+= scalaBinaryVersion{ v =>
+        "net.liftweb" %% "lift-json" % "2.5-M4" exclude("org.specs2","specs2_" + v)
+      },
       initialCommands in console += {
         Iterator("net.liftweb.json._", "com.github.kmizu.jsonda.Implicits._").map("import "+).mkString("\n")
       }
