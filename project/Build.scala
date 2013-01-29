@@ -12,7 +12,7 @@ object build extends Build{
 
   val baseSettings = ScctPlugin.instrumentSettings ++ Seq(
     organization := "com.github.kmizu",
-    version := "0.8.0",
+    version := "0.9.0-SNAPSHOT",
     scalaVersion := "2.10.0",
     crossScalaVersions := Seq("2.10.0", "2.9.1", "2.9.2"),
     libraryDependencies ++= Seq(
@@ -101,9 +101,9 @@ object build extends Build{
     file("lift")
   ).settings(
     baseSettings ++ Seq(
-      libraryDependencies ++= Seq(
-        "net.liftweb" %% "lift-json" % "2.5-M4"
-      ),
+      libraryDependencies <+= scalaBinaryVersion{ v =>
+        "net.liftweb" %% "lift-json" % "2.5-M4" exclude("org.specs2","specs2_" + v)
+      },
       initialCommands in console += {
         Iterator("net.liftweb.json._", "com.github.kmizu.jsonda.Implicits._").map("import "+).mkString("\n")
       }
