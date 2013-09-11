@@ -173,13 +173,13 @@ of `%` method depends on the underlying JSON library.**
 * Jsonda with lift-json:
 
 ```scala
-import `com.github.kmizu.jsonda.dsl.LiftJsonDSL._
+import com.github.kmizu.jsonda.dsl.LiftJsonDSL._
 ```
 
 * Jsonda with `scala.util.parsing.json`:
 
 ```scala
-import `com.github.kmizu.jsonda.dsl.StdJsonDSL._
+import com.github.kmizu.jsonda.dsl.StdJsonDSL._
 ```
 
 # Scaladoc
