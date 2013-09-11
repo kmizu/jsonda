@@ -133,10 +133,10 @@ or Traversable[JsonValueType] as the followings (new in jsonda 0.8.0):
 
 # Quick Start
 
-Here are the way to create JSON using Jsonda:
+Here are the way to create JSON using Jsonda (with jsonda-json4s):
 
 ```scala
-import com.github.kmizu.jsonda.Implicits._
+import com.github.kmizu.jsonda.dsl.Json4sDSL._
 
 val person = %{
   'name :- "Kota Mizushima"
@@ -144,14 +144,13 @@ val person = %{
 }
 ```
     
-The type of person is [[net.liftweb.json.JsonAST.JValue]] if you import [[com.github.kmizu.jsonda.Implicits]].
-If you are familiar with lift-json, you can easily manipulate JSON objects.  Jsonda 4.0.0 also supports
-json4s-native and [[scala.util.parsing.json]].
+The type of person is `org.json4s.native.JValue`.  If you are familiar with [json4s](https://github.com/json4s/json4s), 
+you can easily manipulate JSON objects.  
 
 Nested JSON can be written easily as the followings:
 
 ```scala
-import com.github.kmizu.jsonda.Implicits._
+import com.github.kmizu.jsonda.dsl.Json4sDSL._
     
 val config = % {
   'name :- "a config"
@@ -165,6 +164,22 @@ val config = % {
     'inline :- true
   }
 }
+```
+
+Jsonda 0.8.0 supports not only json4s but also [lift-json](https://github.com/lift/lift/tree/master/framework/lift-base/lift-json/), and 
+[scala.util.parsing.json](http://www.scala-lang.org/api/current/index.html#scala.util.parsing.json.package).  **Note that the return type
+of `%` method depends on the underlying JSON library.**
+
+* Jsonda with lift-json:
+
+```scala
+import `com.github.kmizu.jsonda.dsl.LiftJsonDSL._
+```
+
+* Jsonda with `scala.util.parsing.json`:
+
+```scala
+import `com.github.kmizu.jsonda.dsl.StdJsonDSL._
 ```
 
 # Scaladoc
