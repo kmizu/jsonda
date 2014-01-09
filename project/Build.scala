@@ -91,7 +91,7 @@ object build extends Build{
   ).settings(
     baseSettings ++ Seq(
       libraryDependencies ++= Seq(
-        "org.json4s" %% "json4s-native" % "3.2.0"
+        "org.json4s" %% "json4s-native" % "3.2.6"
       )
     ) : _*
   ).dependsOn(core)
@@ -102,7 +102,7 @@ object build extends Build{
   ).settings(
     baseSettings ++ Seq(
       libraryDependencies <+= scalaBinaryVersion{ v =>
-        "net.liftweb" %% "lift-json" % "2.5-RC2"
+        "net.liftweb" %% "lift-json" % "2.5.1"
       },
       initialCommands in console += {
         Iterator("net.liftweb.json._", "com.github.kmizu.jsonda.Implicits._").map("import "+).mkString("\n")
