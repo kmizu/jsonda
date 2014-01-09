@@ -9,23 +9,23 @@ Jsonic to Jsonda.
 # Using with sbt
 
 If you woule like to use Jsonda with sbt, what you need to do is only
-adding the following lines to your build.sbt.  There exists jsonda 0.6.0
-for Scala 2.9.1 and Scala 2.9.2 and Scala 2.10.0.
+adding the following lines to your build.sbt.  There exists jsonda 1.0.0
+for Scala 2.9.1 and Scala 2.9.2 and Scala 2.10.X.
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda-json4s"  % "0.8.0"
+libraryDependencies += "com.github.kmizu" %% "jsonda-json4s"  % "1.0.0"
 ```
 
 or
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda-lift"  % "0.8.0"
+libraryDependencies += "com.github.kmizu" %% "jsonda-lift"  % "1.0.0"
 ```
 
 or
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda-std"  % "0.8.0"
+libraryDependencies += "com.github.kmizu" %% "jsonda-std"  % "1.0.0"
 ```
 
 # For Developer
@@ -43,11 +43,22 @@ Jsonda is very simple DSL for creating JSON objects.  Notations are followings:
     %{ $key1 :- $value1; $key2 :- $value2; ... }
 ```
 
+available from 1.0.0
+```scala```
+    %{ $key1 := $value1; $key2 := $value2; ... }
+```
+
 or
 
 ```scala```
     %{ $key1 :- $value1
        $key2 :- $value2 }
+```
+
+available from 1.0.0
+```scala```
+    %{ $key1 := $value1
+       $key2 := $value2 }
 ```
 
 Both have same meanings.
@@ -186,6 +197,7 @@ import com.github.kmizu.jsonda.dsl.StdJsonDSL._
 
 Scaladoc is available via the following links:
 
+* [Scaladoc(1.0.0)](http://kmizu.github.com/jsonda/api/1.0.0)
 * [Scaladoc(0.8.0)](http://kmizu.github.com/jsonda/api/0.8.0)
 * [Scaladoc(0.6.0)](http://kmizu.github.com/jsonda/api/0.6.0)
 * [Scaladoc(0.4.0)](http://kmizu.github.com/jsonda/api/0.4.0)
