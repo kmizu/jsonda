@@ -10,7 +10,7 @@ object build extends Build{
 
   val scaladocBranch = TaskKey[String]("scaladoc-branch")
 
-  val baseSettings = sbt.scct.ScctPlugin.instrumentSettings ++ Seq(
+  val baseSettings = Seq(
     organization := "com.github.kmizu",
     version := "0.9.0-SNAPSHOT",
     scalaVersion := "2.10.3",
