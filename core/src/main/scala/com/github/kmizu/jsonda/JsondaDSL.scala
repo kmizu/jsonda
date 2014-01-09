@@ -34,7 +34,15 @@ trait JsondaDSL {
      * outside of % method call.
      * @param value value corresponds key, which is actually `underlying`.
      */
-    def :-(value: JsonValueType) {
+    def :-(value: JsonValueType): Unit = {
+      values.value = (underlying, value) :: values.value
+    }
+
+    /**
+     * This method is same as `:-` except for naming
+     * @param value value corresponds key, which is actually `underlying`
+     */
+    def :=(value: JsonValueType): Unit = {
       values.value = (underlying, value) :: values.value
     }
   }
