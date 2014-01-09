@@ -12,7 +12,7 @@ object build extends Build{
 
   val baseSettings = Seq(
     organization := "com.github.kmizu",
-    version := "0.9.0-SNAPSHOT",
+    version := "1.0.0",
     scalaVersion := "2.10.3",
     crossScalaVersions := Seq("2.10.3", "2.9.1", "2.9.2"),
     libraryDependencies ++= Seq(
