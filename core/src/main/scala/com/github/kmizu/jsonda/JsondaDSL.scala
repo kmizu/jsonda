@@ -4,8 +4,6 @@ import util.DynamicVariable
 
 /**
  * @author Kota Mizushima
- * Date: 2012/10/31
- * Time: 0:48
  */
 trait JsondaDSL {
   type JsonValueType <: Any

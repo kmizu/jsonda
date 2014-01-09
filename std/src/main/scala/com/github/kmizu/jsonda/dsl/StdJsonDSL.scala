@@ -6,9 +6,8 @@ import scala.util.parsing.json._
 
 /**
  * @author Kota Mizushima
- * Date: 2012/11/05
- * Time: 22:26
  */
+@deprecated("scala.util.parsing.json will be deprecated", "1.0.0")
 class StdJsonDSL extends JsondaDSL {
   type JsonValueType = Any
   type JsonInt = Int
@@ -66,4 +65,5 @@ class StdJsonDSL extends JsondaDSL {
   def $(elements: JsonValueType*): JsonArray = JSONArray(elements.toList)
 }
 
+@deprecated("scala.util.parsing.json will be deprecated", "1.0.0")
 object StdJsonDSL extends StdJsonDSL
