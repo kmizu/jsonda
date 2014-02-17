@@ -1,4 +1,4 @@
-# Jsonda - Simple DSL for JSON objects which is independent from specific JSON library
+# Jsonda - Simple DSL for JSON objects which is independent from specific JSON library [![Build Status](https://travis-ci.org/kmizu/jsonda.png?branch=master)](https://travis-ci.org/kmizu/jsonda)
 
 This project provides a Jsonda DSL, which can be used to construct JSON object
 easily, in Scala.  The code size of Jsonda is small and it is easy to 
