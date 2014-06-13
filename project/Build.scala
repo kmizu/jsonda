@@ -1,27 +1,17 @@
 import sbt._,Keys._
 
-object build extends Build{
-
-  def specs2(version: String) =
-    if(version.startsWith("2.10"))
-      "org.specs2" %% "specs2" % "1.13" % "test"
-    else
-      "org.specs2" %% "specs2" % "1.12.3" % "test"
-
+object Build extends sbt.Build{
   val scaladocBranch = TaskKey[String]("scaladoc-branch")
 
   val baseSettings = Seq(
     organization := "com.github.kmizu",
-    version := "1.0.0",
-    scalaVersion := "2.10.3",
-    crossScalaVersions := Seq("2.10.3", "2.9.1", "2.9.2"),
+    version := "1.1.0-SNAPSHOT",
+    scalaVersion := "2.11.1",
+    crossScalaVersions := Seq("2.11.1"),
     libraryDependencies ++= Seq(
       "junit" % "junit" % "4.11" % "test"
     ),
-    libraryDependencies <+= scalaVersion(specs2),
-    resolvers ++= Seq(
-      Opts.resolver.sonatypeReleases
-    ),
+    libraryDependencies += "org.specs2" %% "specs2" % "2.3.12" % "test",
     scalacOptions ++= Seq("-deprecation","-unchecked"),
     scalacOptions <++= scalaVersion.map{s =>
       if(s.startsWith("2.10"))
@@ -75,7 +65,7 @@ object build extends Build{
       publishArtifact := false, publish := {}, publishLocal := {}
     ) : _*
   ).aggregate(
-    core,json4s,lift,std
+    core,json4s
   )
 
   lazy val core = Project(
@@ -91,30 +81,8 @@ object build extends Build{
   ).settings(
     baseSettings ++ Seq(
       libraryDependencies ++= Seq(
-        "org.json4s" %% "json4s-native" % "3.2.6"
+        "org.json4s" %% "json4s-native" % "3.2.9"
       )
     ) : _*
   ).dependsOn(core)
-
-  lazy val lift = Project(
-    "jsonda-lift",
-    file("lift")
-  ).settings(
-    baseSettings ++ Seq(
-      libraryDependencies <+= scalaBinaryVersion{ v =>
-        "net.liftweb" %% "lift-json" % "2.5.1"
-      },
-      initialCommands in console += {
-        Iterator("net.liftweb.json._", "com.github.kmizu.jsonda.Implicits._").map("import "+).mkString("\n")
-      }
-    ) : _*
-  ).dependsOn(core)
-
-  lazy val std = Project(
-    "jsonda-std",
-    file("std")
-  ).settings(
-    baseSettings: _*
-  ).dependsOn(core)
-
 }

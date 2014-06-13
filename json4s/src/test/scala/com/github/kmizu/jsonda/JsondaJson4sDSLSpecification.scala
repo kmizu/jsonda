@@ -19,11 +19,11 @@ class JsondaJson4sDSLSpecification extends Specification {
     }
 
     """have 100 for 'some_key""" in {
-      (data \\ "some_key").values must ===(100)
+      (data \ "some_key").values must ===(100)
     }
 
     """have null for 'none_key""" in {
-      (data \\ "none_key").values must ===(null)
+      (data \ "none_key").values must ===(null)
     }
   }
 
@@ -32,7 +32,7 @@ class JsondaJson4sDSLSpecification extends Specification {
       'long_key :- 100
     }
     """have 100 for 'long_key""" in {
-      (data \\ "long_key").values must_==(100)
+      (data \ "long_key").values must ===(100)
     }
   }
 
@@ -41,7 +41,7 @@ class JsondaJson4sDSLSpecification extends Specification {
       'long_key :- 100L
     }
     """have 100 for 'int_key""" in {
-      (data \\ "long_key").values must_==(100)
+      (data \ "long_key").values must ===(100)
     }
   }
 
@@ -50,7 +50,7 @@ class JsondaJson4sDSLSpecification extends Specification {
       'float_key :- 1.5f
     }
     """have 1.5 for 'float_key""" in {
-      (data \\ "float_key").values must_==(1.5F)
+      (data \ "float_key").values must ===(1.5F)
     }
   }
 
@@ -59,7 +59,7 @@ class JsondaJson4sDSLSpecification extends Specification {
       'double_key :- 1.5
     }
     """have 1.5 for 'double_key""" in {
-      (data \\ "double_key").values must_==(1.5)
+      (data \ "double_key").values must ===(1.5)
     }
   }
 
@@ -69,10 +69,10 @@ class JsondaJson4sDSLSpecification extends Specification {
       'boolean_false_key :- false
     }
     """have true for 'boolean_true_key""" in {
-      (data \\ "boolean_true_key").values must ===(true)
+      (data \ "boolean_true_key").values must ===(true)
     }
     """have false for 'boolean_false_key""" in {
-      (data \\ "boolean_false_key").values must ===(false)
+      (data \ "boolean_false_key").values must ===(false)
     }
   }
 
@@ -81,7 +81,7 @@ class JsondaJson4sDSLSpecification extends Specification {
       'string_key :- "Hello"
     }
     """have "Hello" for 'string_key""" in {
-      (data \\ "string_key").values must ===("Hello")
+      (data \ "string_key").values must ===("Hello")
     }
   }
 
@@ -90,7 +90,7 @@ class JsondaJson4sDSLSpecification extends Specification {
       'null_key :- JsonNull
     }
     """have null for 'null_key""" in {
-      (data \\ "null_key").values must ===(null)
+      (data \ "null_key").values must ===(null)
     }
   }
 
@@ -99,7 +99,7 @@ class JsondaJson4sDSLSpecification extends Specification {
       'array_key :- $(1, 2, 3)
     }
     """have List(1, 2, 3) for 'array_key""" in {
-      (data \\ "array_key").values must ===(List(1, 2, 3))
+      (data \ "array_key").values must ===(List(1, 2, 3))
     }
   }
 
@@ -108,10 +108,10 @@ class JsondaJson4sDSLSpecification extends Specification {
       'name :- "Kota Mizushima"; 'age :- 29
     }
     """have "Kota Mizushima for 'name""" in {
-      (person \\ "name").values must ===("Kota Mizushima")
+      (person \ "name").values must ===("Kota Mizushima")
     }
     """have 29 for 'age""" in {
-      (person \\ "age").values must ===(29)
+      (person \ "age").values must ===(29)
     }
   }
 
@@ -122,13 +122,13 @@ class JsondaJson4sDSLSpecification extends Specification {
       }
     }
     """have "a String" for 'str""" in {
-      (data \\ "str").values must ===("a String")
+      (data \ "str").values must ===("a String")
     }
     """have [1, 2, 3, 4, 5] for 'arr""" in {
-      (data \\ "arr").asInstanceOf[JsonAST.JArray] must ===(JsonAST.JArray(List(1, 2, 3, 4, 5)))
+      (data \ "arr").values must ===(List(1, 2, 3, 4, 5))
     }
     """have obj which x == 1 and y == 2""" in {
-      val obj = (data \\ "obj").asInstanceOf[JsonAST.JObject]
+      val obj = (data \ "obj").asInstanceOf[JsonAST.JObject]
       (obj \ "x").values must ===(1)
       (obj \ "y").values must ===(2)
 
@@ -136,12 +136,16 @@ class JsondaJson4sDSLSpecification extends Specification {
   }
 
   """%{'foo :- Seq(1, 2, 3); 'bar :- "Seq("a", "b") }""" should {
-    val data = %{
+    val data = % {
       'foo :- Seq(1, 2, 3)
       'bar :- Seq("a", "b")
     }
-    (data \ "foo").values must_== List(1, 2, 3)
-    (data \ "bar").values must_== List("a", "b")
+    """have [1, 2, 3] for 'foo""" in {
+      (data \ "foo").values must ===(List(1, 2, 3))
+    }
+    """have ["a", "b"] for 'bar""" in {
+      (data \ "bar").values must ===(List("a", "b"))
+    }
   }
 
 }
