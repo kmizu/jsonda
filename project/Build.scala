@@ -3,18 +3,27 @@ import sbt._,Keys._
 object Build extends sbt.Build{
   val scaladocBranch = TaskKey[String]("scaladoc-branch")
 
+  def specs2(version: String) = {
+    if (version.startsWith("2.10"))
+      "org.specs2" %% "specs2" % "1.13" % "test"
+    else if(version.startsWith("2.11"))
+      "org.specs2" %% "specs2" % "2.3.12" % "test"
+    else
+      "org.specs2" %% "specs2" % "1.12.3" % "test"
+  }
+
   val baseSettings = Seq(
     organization := "com.github.kmizu",
     version := "1.1.0-SNAPSHOT",
     scalaVersion := "2.11.1",
-    crossScalaVersions := Seq("2.11.1"),
+    crossScalaVersions := Seq("2.11.1", "2.10.3", "2.9.1", "2.9.2"),
     libraryDependencies ++= Seq(
       "junit" % "junit" % "4.11" % "test"
     ),
-    libraryDependencies += "org.specs2" %% "specs2" % "2.3.12" % "test",
+    libraryDependencies <+= scalaVersion(specs2),
     scalacOptions ++= Seq("-deprecation","-unchecked"),
     scalacOptions <++= scalaVersion.map{s =>
-      if(s.startsWith("2.10"))
+      if(s.startsWith("2.10") || s.startsWith("2.11"))
         Seq("-language:implicitConversions")
       else
         Nil
