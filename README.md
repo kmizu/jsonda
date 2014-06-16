@@ -187,7 +187,7 @@ import com.github.kmizu.jsonda.dsl.StdJsonDSL._
 
 Scaladoc is available via the following links:
 
-* [Scaladoc(1.0.0)](http://kmizu.github.com/jsonda/api/1.2.0)
+* [Scaladoc(1.2.0)](http://kmizu.github.com/jsonda/api/1.2.0)
 * [Scaladoc(1.0.0)](http://kmizu.github.com/jsonda/api/1.0.0)
 * [Scaladoc(0.8.0)](http://kmizu.github.com/jsonda/api/0.8.0)
 * [Scaladoc(0.6.0)](http://kmizu.github.com/jsonda/api/0.6.0)
