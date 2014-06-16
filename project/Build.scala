@@ -17,7 +17,7 @@ object Build extends sbt.Build{
   val baseSettings =sonatypeSettings ++ Seq(
     organization := "com.github.kmizu",
     profileName := "com.github.kmizu",
-    version := "1.2.0",
+    version := "1.3.0-SNAPSHOT",
     scalaVersion := "2.11.1",
     crossScalaVersions := Seq("2.11.1", "2.10.3", "2.9.1", "2.9.2"),
     libraryDependencies ++= Seq(
