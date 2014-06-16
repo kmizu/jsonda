@@ -9,29 +9,19 @@ Jsonic to Jsonda.
 # Using with sbt
 
 If you woule like to use Jsonda with sbt, what you need to do is only
-adding the following lines to your build.sbt.  There exists jsonda 1.0.0
-for Scala 2.9.1 and Scala 2.9.2 and Scala 2.10.X.
+adding the following lines to your build.sbt.  There exists jsonda 1.2.0
+for Scala 2.9.1, Scala 2.9.2, Scala 2.10.X, Scala.2.11.X.
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda-json4s"  % "1.0.0"
+libraryDependencies += "com.github.kmizu" %% "jsonda-json4s"  % "1.2.0"
 ```
 
-or
+## Release Note
 
-```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda-lift"  % "1.0.0"
-```
+### 1.2.0
 
-or
-
-```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda-std"  % "1.0.0"
-```
-
-# For Developer
-
-* By running sbt gen-idea, project definition files for IntelliJ IDEA is generated.
-* By running sbt eclipse, project definition files for Scala IDE for Eclipse is generated.
+* Drop std-json and lif-json support.  The reason why lift-json support is dropped
+is that lift-json against Scala 2.11 was not published.
 
 # Syntax
 
@@ -197,6 +187,7 @@ import com.github.kmizu.jsonda.dsl.StdJsonDSL._
 
 Scaladoc is available via the following links:
 
+* [Scaladoc(1.0.0)](http://kmizu.github.com/jsonda/api/1.2.0)
 * [Scaladoc(1.0.0)](http://kmizu.github.com/jsonda/api/1.0.0)
 * [Scaladoc(0.8.0)](http://kmizu.github.com/jsonda/api/0.8.0)
 * [Scaladoc(0.6.0)](http://kmizu.github.com/jsonda/api/0.6.0)
