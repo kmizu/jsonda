@@ -1,4 +1,6 @@
 import sbt._,Keys._
+import xerial.sbt.Sonatype._
+import SonatypeKeys._
 
 object Build extends sbt.Build{
   val scaladocBranch = TaskKey[String]("scaladoc-branch")
@@ -12,8 +14,9 @@ object Build extends sbt.Build{
       "org.specs2" %% "specs2" % "1.12.3" % "test"
   }
 
-  val baseSettings = Seq(
+  val baseSettings =sonatypeSettings ++ Seq(
     organization := "com.github.kmizu",
+    profileName := "com.github.kmizu",
     version := "1.1.0-SNAPSHOT",
     scalaVersion := "2.11.1",
     crossScalaVersions := Seq("2.11.1", "2.10.3", "2.9.1", "2.9.2"),
