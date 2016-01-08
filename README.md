@@ -9,14 +9,27 @@ Jsonic to Jsonda.
 # Using with sbt
 
 If you woule like to use Jsonda with sbt, what you need to do is only
-adding the following lines to your build.sbt.  There exists jsonda 1.2.0
-for Scala 2.9.1, Scala 2.9.2, Scala 2.10.X, Scala.2.11.X.
+adding the following lines to your build.sbt.  There exists jsonda 1.4.0
+for Scala.2.11.X.
+
+For jsonda-json4s:
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda-json4s"  % "1.2.0"
+libraryDependencies += "com.github.kmizu" %% "jsonda-json4s"  % "1.4.0"
+```
+
+For jsonda-spray-json:
+
+```scala
+libraryDependencies += "com.github.kmizu" %% "jsonda-spray-json"  % "1.4.0"
 ```
 
 ## Release Note
+
+### 1.4.0
+
+* Drop Scala 2.9.X and Scala 2.10.X support
+* Add support for spray-json
 
 ### 1.2.0
 
@@ -167,26 +180,11 @@ val config = % {
 }
 ```
 
-Jsonda 0.8.0 supports not only json4s but also [lift-json](https://github.com/lift/lift/tree/master/framework/lift-base/lift-json/), and 
-[scala.util.parsing.json](http://www.scala-lang.org/api/current/index.html#scala.util.parsing.json.package).  **Note that the return type
-of `%` method depends on the underlying JSON library.**
-
-* Jsonda with lift-json:
-
-```scala
-import com.github.kmizu.jsonda.dsl.LiftJsonDSL._
-```
-
-* Jsonda with `scala.util.parsing.json`:
-
-```scala
-import com.github.kmizu.jsonda.dsl.StdJsonDSL._
-```
-
 # Scaladoc
 
 Scaladoc is available via the following links:
 
+* [Scaladoc(1.2.0)](http://kmizu.github.com/jsonda/api/1.4.0)
 * [Scaladoc(1.2.0)](http://kmizu.github.com/jsonda/api/1.2.0)
 * [Scaladoc(1.0.0)](http://kmizu.github.com/jsonda/api/1.0.0)
 * [Scaladoc(0.8.0)](http://kmizu.github.com/jsonda/api/0.8.0)
