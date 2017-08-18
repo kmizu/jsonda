@@ -17,6 +17,7 @@ val Scala212 = "2.12.3"
 val baseSettings = Seq(
   organization := "com.github.kmizu",
   scalaVersion := Scala212,
+  autoAPIMappings := true,
   crossScalaVersions := Seq(Scala211, Scala212),
   libraryDependencies ++= Seq(
     "junit" % "junit" % "4.11" % "test"
@@ -74,6 +75,8 @@ lazy val root = Project(
   baseSettings ++ Seq(
     publishArtifact := false, publish := {}, publishLocal := {}
   ): _*
+).enablePlugins(
+  ScalaUnidocPlugin
 ).aggregate(
   core, json4s, play_json
 )
