@@ -1,0 +1,98 @@
+import sbt._
+import Keys._
+import classpath._
+
+val scaladocBranch = TaskKey[String]("scaladoc-branch")
+
+def specs2(version: String) = {
+  if (version.startsWith("2.12"))
+    "org.specs2" %% "specs2-core" % "3.8.6" % "test"
+  else // Assume scala 2.11.x
+    "org.specs2" %% "specs2" % "3.7" % "test"
+}
+
+val Scala211 = "2.11.11"
+val Scala212 = "2.12.3"
+
+val baseSettings = Seq(
+  organization := "com.github.kmizu",
+  version := "1.5.0-SNAPSHOT",
+  scalaVersion := Scala212,
+  crossScalaVersions := Seq(Scala211, Scala212),
+  libraryDependencies ++= Seq(
+    "junit" % "junit" % "4.11" % "test"
+  ),
+  libraryDependencies += { scalaVersion(specs2).value },
+  scalacOptions ++= Seq("-deprecation", "-unchecked"),
+  scalacOptions ++= {
+    Seq("-language:implicitConversions")
+  },
+  scaladocBranch := "master",
+  scalacOptions in (Compile, doc) ++= {
+    val bd = baseDirectory.value
+    val sb = scaladocBranch.value
+    Seq("-sourcepath", bd.getAbsolutePath, "-doc-source-url", "https://github.com/kmizu/jsonda/tree/" + sb + "€{FILE_PATH}.scala")
+  },
+  testOptions += Tests.Argument(TestFrameworks.Specs2, "console"),
+  publishMavenStyle := true,
+  publishTo := {
+    val v = version.value
+    val nexus = "https://oss.sonatype.org/"
+    if (v.trim.endsWith("SNAPSHOT"))
+      Some("snapshots" at nexus + "content/repositories/snapshots")
+    else
+      Some("releases" at nexus + "service/local/staging/deploy/maven2")
+  },
+  publishArtifact in Test := false,
+  pomIncludeRepository := { _ => false },
+  pomExtra := (
+    <url>https://github.com/kmizu/jsonda</url>
+    <licenses>
+      <license>
+        <name>BSD-style</name>
+        <url>http://www.opensource.org/licenses/bsd-license.php</url>
+        <distribution>repo</distribution>
+      </license>
+    </licenses>
+    <scm>
+      <url>git@github.com:kmizu/jsonda.git</url>
+      <connection>scm:git:git@github.com:kmizu/jsonda.git</connection>
+    </scm>
+    <developers>
+      <developer>
+        <id>kmizu</id>
+        <name>Kota Mizushima</name>
+        <url>https://github.com/kmizu</url>
+      </developer>
+    </developers>
+  )
+)
+
+lazy val root = Project(
+  id = "jsonda",
+  base = file(".")
+).settings(
+  baseSettings ++ Seq(
+    publishArtifact := false, publish := {}, publishLocal := {}
+  ): _*
+).aggregate(
+  core, json4s
+)
+
+lazy val core = Project(
+  id = "jsonda-core",
+  base = file("core")
+).settings(
+  baseSettings: _*
+)
+
+lazy val json4s = Project(
+  "jsonda-json4s",
+  file("json4s")
+).settings(
+  baseSettings ++ Seq(
+    libraryDependencies ++= Seq(
+      "org.json4s" %% "json4s-native" % "3.5.3"
+    )
+  ): _*
+).dependsOn(core)
