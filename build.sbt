@@ -16,7 +16,6 @@ val Scala212 = "2.12.3"
 
 val baseSettings = Seq(
   organization := "com.github.kmizu",
-  version := "1.5.0-SNAPSHOT",
   scalaVersion := Scala212,
   crossScalaVersions := Seq(Scala211, Scala212),
   libraryDependencies ++= Seq(
