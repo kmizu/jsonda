@@ -16,8 +16,8 @@ val Scala212 = "2.12.3"
 
 val baseSettings = Seq(
   organization := "com.github.kmizu",
-  version := "1.5.0-SNAPSHOT",
   scalaVersion := Scala212,
+  autoAPIMappings := true,
   crossScalaVersions := Seq(Scala211, Scala212),
   libraryDependencies ++= Seq(
     "junit" % "junit" % "4.11" % "test"
@@ -75,8 +75,10 @@ lazy val root = Project(
   baseSettings ++ Seq(
     publishArtifact := false, publish := {}, publishLocal := {}
   ): _*
+).enablePlugins(
+  ScalaUnidocPlugin
 ).aggregate(
-  core, json4s
+  core, json4s, play_json
 )
 
 lazy val core = Project(
@@ -86,9 +88,20 @@ lazy val core = Project(
   baseSettings: _*
 )
 
+lazy val play_json = Project(
+  id = "jsonda-play_json",
+  base = file("play_json")
+).settings(
+  baseSettings ++ Seq(
+    libraryDependencies ++= Seq(
+      "com.typesafe.play" %% "play-json" % "2.6.3"
+    )
+  ): _*
+).dependsOn(core)
+
 lazy val json4s = Project(
-  "jsonda-json4s",
-  file("json4s")
+  id = "jsonda-json4s",
+  base = file("json4s")
 ).settings(
   baseSettings ++ Seq(
     libraryDependencies ++= Seq(

@@ -9,22 +9,27 @@ Jsonic to Jsonda.
 # Using with sbt
 
 If you woule like to use Jsonda with sbt, what you need to do is only
-adding the following lines to your build.sbt.  There exists jsonda 1.4.0
-for Scala.2.11.X.
+adding the following lines to your build.sbt.  There exists jsonda 1.6.0
+for Scala.2.11.X and Scala 2.12.X.
 
 For jsonda-json4s:
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda-json4s"  % "1.4.0"
+libraryDependencies += "com.github.kmizu" %% "jsonda-json4s" % "1.6.0"
 ```
 
-For jsonda-spray-json:
+For jsonda-play_json:
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda-spray-json"  % "1.4.0"
+libraryDependencies += "com.github.kmizu" %% "jsonda-play_json" % "1.6.0"
 ```
 
 ## Release Note
+
+### 1.6.0
+
+* Drop spray-json support
+* Add support for play-json 
 
 ### 1.4.0
 
@@ -154,11 +159,25 @@ import com.github.kmizu.jsonda.dsl.Json4sDSL._
 
 val person = %{
   'name :- "Kota Mizushima"
-  'age :- 29
+  'age :- 33
 }
 ```
-    
+
 The type of person is `org.json4s.native.JValue`.  If you are familiar with [json4s](https://github.com/json4s/json4s), 
+you can easily manipulate JSON objects.  
+
+Or the below (with jsonda-play_json): 
+
+```scala
+import com.github.kmizu.jsonda.dsl.PlayJsonDSL._
+
+val person = %{
+  'name :- "Kota Mizushima"
+  'age :- 33
+}
+```
+
+The type of person is `play.api.libs.json.JsValue`.  If you are familiar with [play-json](https://www.playframework.com/documentation/2.6.x/ScalaJson)
 you can easily manipulate JSON objects.  
 
 Nested JSON can be written easily as the followings:
@@ -184,6 +203,7 @@ val config = % {
 
 Scaladoc is available via the following links:
 
+* [Scaladoc(1.6.0)](http://javadoc-badge.appspot.com/com.github.kmizu/jsonda_2.11/index.html)
 * [Scaladoc(1.4.0)](http://kmizu.github.com/jsonda/api/1.4.0)
 * [Scaladoc(1.2.0)](http://kmizu.github.com/jsonda/api/1.2.0)
 * [Scaladoc(1.0.0)](http://kmizu.github.com/jsonda/api/1.0.0)
@@ -197,5 +217,4 @@ Scaladoc is available via the following links:
 
 # License
 
-This software is distributed under modified BSD License. See:
-LICENSE.txt
+This software is distributed under modified BSD License. See LICENSE.txt
