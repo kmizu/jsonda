@@ -15,13 +15,13 @@ for Scala.2.11.X and Scala 2.12.X.
 For jsonda-json4s:
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda-json4s" % "1.6.0"
+libraryDependencies += "com.github.kmizu" %% "jsonda" % "1.6.0"
 ```
 
 For jsonda-play_json:
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda-play_json" % "1.6.0"
+libraryDependencies += "com.github.kmizu" %% "jsonda" % "1.6.0"
 ```
 
 ## Release Note
