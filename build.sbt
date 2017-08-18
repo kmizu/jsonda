@@ -76,7 +76,7 @@ lazy val root = Project(
     publishArtifact := false, publish := {}, publishLocal := {}
   ): _*
 ).aggregate(
-  core, json4s
+  core, json4s, play_json
 )
 
 lazy val core = Project(
@@ -86,9 +86,20 @@ lazy val core = Project(
   baseSettings: _*
 )
 
+lazy val play_json = Project(
+  id = "jsonda-play_json",
+  base = file("play_json")
+).settings(
+  baseSettings ++ Seq(
+    libraryDependencies ++= Seq(
+      "com.typesafe.play" %% "play-json" % "2.6.3"
+    )
+  ): _*
+).dependsOn(core)
+
 lazy val json4s = Project(
-  "jsonda-json4s",
-  file("json4s")
+  id = "jsonda-json4s",
+  base = file("json4s")
 ).settings(
   baseSettings ++ Seq(
     libraryDependencies ++= Seq(
