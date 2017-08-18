@@ -10,7 +10,6 @@ import org.specs2.runner._
  * @author Mizushima
  *
  */
-@RunWith(classOf[JUnitRunner])
 class JsondaJson4sDSLSpecification extends Specification {
   """%{ 'some_key :- Option(100); 'none_key :- None }""" should {
     val data = %{
