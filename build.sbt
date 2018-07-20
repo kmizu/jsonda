@@ -1,6 +1,5 @@
 import sbt._
 import Keys._
-import classpath._
 
 val scaladocBranch = TaskKey[String]("scaladoc-branch")
 
@@ -12,7 +11,7 @@ def specs2(version: String) = {
 }
 
 val Scala211 = "2.11.11"
-val Scala212 = "2.12.3"
+val Scala212 = "2.12.6"
 
 val baseSettings = Seq(
   organization := "com.github.kmizu",
