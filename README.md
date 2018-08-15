@@ -47,24 +47,25 @@ Jsonda is very simple DSL for creating JSON objects.  Notations are followings:
 
 * object: 
 
-```scala```
+```scala
     %{ $key1 :- $value1; $key2 :- $value2; ... }
 ```
 
 available from 1.0.0
-```scala```
+```scala
     %{ $key1 := $value1; $key2 := $value2; ... }
 ```
 
 or
 
-```scala```
+```scala
     %{ $key1 :- $value1
        $key2 :- $value2 }
 ```
 
-available from 1.0.0
-```scala```
+available from 1.0.0:
+
+```scala
     %{ $key1 := $value1
        $key2 := $value2 }
 ```
@@ -73,20 +74,20 @@ Both have same meanings.
 
 * array:
 
-```scala```
+```scala
     $($value1, $value2, ...)
 ```
 
 or Traversable[JsonValueType] as the followings (new in jsonda 0.8.0):
 
-```scala```
+```scala
     Seq($value1, $value2, ...)
 ```
 
 * primitive: 
   * number(Int):
 
-```scala```
+```scala
       100
       200
       300
@@ -94,56 +95,56 @@ or Traversable[JsonValueType] as the followings (new in jsonda 0.8.0):
 
   * number (Long)
 
-```scala```
+```scala
       1000000000000L
       2000000000000L
       3000000000000L
 ```
 
   * number(Float):
-```scala``
+```scala
       10.5F
       12.0F
 ```
 
   * number(Double):
 
-```scala```
+```scala
       10.5
       20.5
 ```
 
   * string (from Scala's BigInt):
 
-```scala```
+```scala
       BigInt("100000000000000000000")
       BigInt("2000000000000000000000000")
 ```
 
   * string (from Scala's BigDecimal):
 
-```scala```
+```scala
       BigDecimal("1.123456789")
       BigDecimal("2.234568978")
 ```
 
   * string:
 
-```scala```
+```scala
       "Hello, World!"
       "Hello, Scala!"
 ```
 
   * boolean:
 
-```scala```
+```scala
       true
       false
 ```
 
   * null:
 
-```scala```
+```scala
       JsonNull
 ```
 
