@@ -1,4 +1,12 @@
-# Jsonda - Simple DSL for JSON objects which is independent from specific JSON library [![Build Status](https://travis-ci.org/kmizu/jsonda.png?branch=master)](https://travis-ci.org/kmizu/jsonda)
+# Jsonda - Simple DSL for JSON objects which is independent from specific JSON library
+
+[![Build Status](https://travis-ci.org/kmizu/jsonda.png?branch=master)](https://travis-ci.org/kmizu/jsonda)
+
+[![Gitter](https://badges.gitter.im/kmizu/jsonda.svg)](https://gitter.im/kmizu/jsonda?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Build Status](https://travis-ci.org/kmizu/jsonda.png?branch=master)](https://travis-ci.org/kmizu/jsonda)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.kmizu/jsonda-core_2.13/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.kmizu/jsonda-core_2.13)
+[![Scaladoc](http://javadoc-badge.appspot.com/com.github.kmizu/jsonda-core_2.13.svg?label=scaladoc)](http://javadoc-badge.appspot.com/com.github.kmizu/jsonda-core_2.13/index.html#com.github.kmizu.jsonda.package)
+[![Reference Status](https://www.versioneye.com/java/com.github.kmizu:jsonda-core_2.13/reference_badge.svg?style=flat)](https://www.versioneye.com/java/com.github.kmizu:jsonda-core_2.13/references)
 
 This project provides a Jsonda DSL, which can be used to construct JSON object
 easily, in Scala.  The code size of Jsonda is small and it is easy to 
@@ -9,22 +17,29 @@ Jsonic to Jsonda.
 # Using with sbt
 
 If you woule like to use Jsonda with sbt, what you need to do is only
-adding the following lines to your build.sbt.  There exists jsonda 1.6.0
-for Scala.2.11.X and Scala 2.12.X.
+adding the following lines to your build.sbt.  There exists jsonda 2.0.0
+for Scala.2.11.X, Scala 2.12.X, and Scala 2.13.X.
 
 For jsonda-json4s:
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda" % "2.0.0"
+libraryDependencies += "com.github.kmizu" %% "jsonda-json4s" % "2.0.0"
 ```
 
 For jsonda-play_json:
 
 ```scala
-libraryDependencies += "com.github.kmizu" %% "jsonda" % "2.0.0"
+libraryDependencies += "com.github.kmizu" %% "jsonda-play_json" % "2.0.0"
 ```
 
 ## Release Note
+
+### 2.0.0
+* Drop symbol literals as keys
+  - such as `{'key :- "value"}`
+  - use `{"key" :- "value"}` form instead
+* Support Scala 2.1.3
+* Follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html) from this version
 
 ### 1.6.0
 
