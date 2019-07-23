@@ -66,9 +66,7 @@ trait JsondaDSL {
 
   implicit def makeBinderFromString(arg: String): PBinder = new PBinder(arg)
 
-  implicit def makeBinderFromSymbol(arg: Symbol): PBinder = new PBinder(arg.name)
-
-  implicit def option2JsonValue[A <% JsonValueType](arg: Option[A]): JsonValueType = arg match {
+  implicit def option2JsonValue[A](arg: Option[A])(implicit view: A => JsonValueType): JsonValueType = arg match {
     case Some(value) => value
     case None => JsonNull
   }
@@ -93,7 +91,7 @@ trait JsondaDSL {
 
   implicit def pimpJsonAST(arg: JsonValueType): PJSON
 
-  implicit def toJsonArray[A <% JsonValueType](arg: Traversable[A]): JsonArray
+  implicit def toJsonArray[A](arg: Iterable[A])(implicit view: A => JsonValueType): JsonArray
 
   val JsonNull: JsonValueType
 

@@ -60,7 +60,7 @@ class PlayJsonDSL extends JsondaDSL {
 
   implicit def pimpJsonAST(arg: JsValue): PJSON = new PJSON(arg)
 
-  implicit def toJsonArray[A <% JsonValueType](arg: Traversable[A]): JsonArray = JsArray(arg.map{e => e:JsonValueType}.toList)
+  implicit def toJsonArray[A](arg: Iterable[A])(implicit view: A => JsonValueType): JsonArray = JsArray(arg.map{e => e:JsonValueType}.toList)
 
   def constructJsonObject() = JsObject(values.value)
 

@@ -159,8 +159,8 @@ Here are the way to create JSON using Jsonda (with jsonda-json4s):
 import com.github.kmizu.jsonda.dsl.Json4sDSL._
 
 val person = %{
-  'name :- "Kota Mizushima"
-  'age :- 33
+  "name" :- "Kota Mizushima"
+  "age" :- 33
 }
 ```
 
@@ -173,12 +173,12 @@ Or the below (with jsonda-play_json):
 import com.github.kmizu.jsonda.dsl.PlayJsonDSL._
 
 val person = %{
-  'name :- "Kota Mizushima"
-  'age :- 33
+  "name" :- "Kota Mizushima"
+  "age" :- 33
 }
 ```
 
-The type of person is `play.api.libs.json.JsValue`.  If you are familiar with [play-json](https://www.playframework.com/documentation/2.6.x/ScalaJson)
+The type of person is `play.api.libs.json.JsValue`.  If you are familiar with [play-json](https://www.playframework.com/documentation/2.7.x/ScalaJson)
 you can easily manipulate JSON objects.  
 
 Nested JSON can be written easily as the followings:
