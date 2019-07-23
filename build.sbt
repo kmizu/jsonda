@@ -3,25 +3,26 @@ import Keys._
 
 val scaladocBranch = TaskKey[String]("scaladoc-branch")
 
-def specs2(version: String) = {
-  if (version.startsWith("2.12"))
-    "org.specs2" %% "specs2-core" % "3.8.6" % "test"
-  else // Assume scala 2.11.x
-    "org.specs2" %% "specs2" % "3.7" % "test"
-}
+def Scala211 = "2.11.11"
+def Scala212 = "2.12.6"
+def Scala213 = "2.13.0"
 
-val Scala211 = "2.11.11"
-val Scala212 = "2.12.6"
+scalaVersion := Scala213
+
+crossScalaVersions := Seq(Scala211, Scala212, Scala213)
+
 
 val baseSettings = Seq(
   organization := "com.github.kmizu",
-  scalaVersion := Scala212,
+  scalaVersion := Scala213,
   autoAPIMappings := true,
-  crossScalaVersions := Seq(Scala211, Scala212),
   libraryDependencies ++= Seq(
     "junit" % "junit" % "4.11" % "test"
   ),
-  libraryDependencies += { scalaVersion(specs2).value },
+  libraryDependencies ++= Seq(
+    "org.specs2" %% "specs2-core" % "4.6.0" % "test",
+    "junit" % "junit" % "4.11" % "test"
+  ),
   scalacOptions ++= Seq("-deprecation", "-unchecked"),
   scalacOptions ++= {
     Seq("-language:implicitConversions")
@@ -93,7 +94,7 @@ lazy val play_json = Project(
 ).settings(
   baseSettings ++ Seq(
     libraryDependencies ++= Seq(
-      "com.typesafe.play" %% "play-json" % "2.6.3"
+      "com.typesafe.play" %% "play-json" % "2.7.4"
     )
   ): _*
 ).dependsOn(core)
@@ -104,7 +105,7 @@ lazy val json4s = Project(
 ).settings(
   baseSettings ++ Seq(
     libraryDependencies ++= Seq(
-      "org.json4s" %% "json4s-native" % "3.5.3"
+      "org.json4s" %% "json4s-native" % "3.6.7"
     )
   ): _*
 ).dependsOn(core)
