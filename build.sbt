@@ -94,7 +94,7 @@ lazy val play_json = Project(
 ).settings(
   baseSettings ++ Seq(
     libraryDependencies ++= Seq(
-      "com.typesafe.play" %% "play-json" % "2.7.4"
+      "com.typesafe.play" %% "play-json" % "2.8.0"
     )
   ): _*
 ).dependsOn(core)
