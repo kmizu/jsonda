@@ -21,7 +21,7 @@ val baseSettings = Seq(
   ),
   libraryDependencies ++= Seq(
     "org.specs2" %% "specs2-core" % "4.8.2" % "test",
-    "junit" % "junit" % "4.11" % "test"
+    "junit" % "junit" % "4.13.1" % "test"
   ),
   scalacOptions ++= Seq("-deprecation", "-unchecked"),
   scalacOptions ++= {
