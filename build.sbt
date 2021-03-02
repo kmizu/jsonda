@@ -105,7 +105,7 @@ lazy val json4s = Project(
 ).settings(
   baseSettings ++ Seq(
     libraryDependencies ++= Seq(
-      "org.json4s" %% "json4s-native" % "3.6.7"
+      "org.json4s" %% "json4s-native" % "3.6.11"
     )
   ): _*
 ).dependsOn(core)
